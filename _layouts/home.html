@@ -5,10 +5,27 @@ layout: default
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            
+            <div class="row text-center">
+                <img  height="320px" src="{{"/assets/img/profile.jpg" | prepend: site.baseurl }}" alt="Profile" class="img-rounded">
+            </div>
+            <div class="row">
+                <h3>
+                    {{site.data.profile.namaDepan}} {{site.data.profile.namaBelakang}}
+                </h3>
+                <h5 class="text-muted">
+                    @{{site.data.profile.userId}}
+                </h5>
+                <p class="text-justify">
+                    {{site.data.profile.biodata}}
+                </p>
+                <div>
+                    <span class="fa fa-id-card"/> {{site.data.profile.perusahaan}} 
+                    <small>({{site.data.profile.jabatan}})</small>
+                </div>
+            </div>
         </div>
-        <div class="col-md-9 col-sm-12 push-left">
-            {{ content }}
+        <div id="content" class="col-md-9 text-justify" style="padding-left: 20px">
+            {{content}}
         </div>
     </div>
 </div>

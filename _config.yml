@@ -28,15 +28,18 @@ github_username:  dimMaryanto93
 # Build settings
 markdown: kramdown
 highlighter: rouge
+paginate: 5
 theme: minima
 gist:
   noscript: false
+
 permalink: /notes/:categories/:title
+paginate_path: page-:num/
+
 plugins:
   - jekyll-feed
   - jekyll-gist
   - jekyll-paginate
-paginate_path: page-:num/
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list

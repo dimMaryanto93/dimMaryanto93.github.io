@@ -1,0 +1,82 @@
+--- 
+layout: home
+---
+
+<section>
+    {% for post in paginator.posts %}
+    <div class="section">
+
+        <div class="post-title center">
+            <h4>
+                <small>
+                    <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+                </small>
+            </h4>
+        </div>
+
+        <div class="post-metadata">
+            <small>
+                <span class="fa fa-calendar-o text-primary"></span>
+                {{ post.date | date: "%Y, %b %-d" }} {% if post.author %}
+                <br/>
+                <i class="fa fa-user text-primary"></i>
+                <span itemprop="name">{{ post.author }}</span>
+                {% endif %}
+            </small>
+        </div>
+
+        <div class="post-content">
+            {% if post.content contains '<!--more-->' %} 
+                {{ post.content | split:'<!--more-->' | first }}
+                <p>
+                    <a href="{{ site.baseurl }}{{ post.url }}">Lanjut membaca ...</a>
+                </p>
+            {% else %} {{ post.content }} {% endif %}
+        </div>
+    </div>
+    <div class="divider"></div>
+    {% endfor %}
+</section>
+<br>
+<section style="text-align: right">
+    <div>
+        <ul class="pagination">
+            {% if paginator.total_pages > 1 %}
+                {% if paginator.previous_page %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">
+                        <span class="fa fa-caret-left" />
+                        Sebelumnya
+                    </a>
+                </li>
+                {% else %}
+                <li class="disabled page-item">
+                    <a class="page-link">
+                        <span class="fa fa-caret-left" />
+                        Sebelumnya
+                    </a>
+                </li>
+                {% endif %}
+                <li class="page-item">
+                    <a class="page-link">Halaman {{ paginator.page }} dari {{ paginator.total_pages }}</a>
+                </li>
+                {% if paginator.next_page %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">
+                        Selanjutnya
+                        <span class="fa fa-caret-right" />
+                    </a>
+                </li class="page-item">
+                {% else %}
+                <li class="disabled">
+                    <a class="page-link">
+                        Selanjutnya
+                        <span class="fa fa-caret-right" />
+                    </a>
+                </li>
+                {% endif %} 
+            {% endif %}
+        </ul>
+    </div>
+    <!-- end pagination control -->
+</section>
