@@ -29,7 +29,6 @@ github_username:  dimMaryanto93
 markdown: kramdown
 highlighter: rouge
 paginate: 5
-theme: minima
 gist:
   noscript: false
 
