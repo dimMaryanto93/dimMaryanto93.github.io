@@ -39,6 +39,11 @@ permalink: /pages/categories
                 <a href="{{ post.url | prepend: site.baseurl }}">
                     {{ post.title }}
                 </a>
+                <div>
+                    <small>
+                        <span class="fa fa-tags"></span> {{post.tags | join: ', '}}
+                    </small>
+                </div>
             </li>
         {% endfor %}
     </ul>

@@ -3,9 +3,23 @@ layout: home
 ---
 
 <article itemscope itemtype="http://schema.org/BlogPosting">
-    <h4>
+    <h3>
         {{ page.title }}
-    </h4>
+    </h3>
+    <small>
+        <span class="fa fa-calendar"></span>
+        {{ page.date | date: '%A, %d %B %Y' }}
+    </small>
+    &nbsp;
+    <small>
+        <span class="fa fa-user"></span>
+        {{ page.author }}
+    </small>
+    &nbsp;
+    <small> 
+        <span class="fa fa-tags"></span>
+        {{ page.tags | join: ', '}}
+    </small>
     <hr>
     <div>
         {{content}}

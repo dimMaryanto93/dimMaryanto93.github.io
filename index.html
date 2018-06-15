@@ -13,6 +13,10 @@ layout: home
                 <span class="fa fa-calendar"></span> 
                 {{ post.date | date: "%Y, %b %-d" }}
             </small>
+            <small>
+                <span class="fa fa-tags"></span>
+                {{ post.tags | join: ', ' }}
+            </small>
         </div>
 
         <div class="post-content">
