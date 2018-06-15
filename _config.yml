@@ -27,16 +27,18 @@ github_username:  dimMaryanto93
 # Build settings
 markdown: kramdown
 theme: minima
+permalink: /notes/:categories/:title
 plugins:
   - jekyll-feed
+  - jekyll-gist
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-# exclude:
+exclude:
 #   - Gemfile
 #   - Gemfile.lock
-#   - node_modules
+  - node_modules
 #   - vendor/bundle/
 #   - vendor/cache/
 #   - vendor/gems/
