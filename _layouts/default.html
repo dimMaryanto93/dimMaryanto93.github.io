@@ -18,8 +18,13 @@
         Blog: Dimas Maryanto
     {% endif %}
     </title>
+    <link rel="stylesheet" href="{{ "/node_modules/bootstrap/dist/css/bootstrap.min.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/node_modules/font-awesome/css/font-awesome.min.css" | prepend: site.baseurl }}">
+
+    <script type="text/javascript" src="{{ "/node_modules/jquery/dist/jquery.min.js" | prepend: site.baseurl }}"></script>
+    <script type="text/javascript" src="{{ "/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" | prepend: site.baseurl }}"></script>
 </head>
-<body>
-    
+<body class="container">
+    {{content}}
 </body>
 </html>
