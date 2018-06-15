@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    <meta property="og:url" content="{{ site.baseurl }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{ site.title }}" />
+    <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
+    <meta property="og:image" content="{{ "/static/img/profile.png" | prepend: site.baseurl }}" />
+    <title>
+    {% if page.title %}
+        Blog: Dimas Maryanto - {{ page.title | escape }}
+    {% else %}
+        Blog: Dimas Maryanto
+    {% endif %}
+    </title>
+</head>
+<body>
+    
+</body>
+</html>
