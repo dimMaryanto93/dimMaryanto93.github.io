@@ -26,11 +26,16 @@ github_username:  dimMaryanto93
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
 theme: minima
+gist:
+  noscript: false
 permalink: /notes/:categories/:title
 plugins:
   - jekyll-feed
   - jekyll-gist
+  - jekyll-paginate
+paginate_path: page-:num/
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -43,3 +48,5 @@ exclude:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+exclude: [vendor]
