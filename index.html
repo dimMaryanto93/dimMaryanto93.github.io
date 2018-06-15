@@ -5,16 +5,14 @@ layout: home
 <section>
     {% for post in paginator.posts %}
     <div class="section">
-
-        <div class="text-center">
-            <h4>            
-                <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-            </h4>
-        </div>
-
+        <h4 class="text-center">            
+            <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+        </h4>
         <div>
-            
-            <small><span class="fa fa-calendar"></span> {{ post.date | date: "%Y, %b %-d" }}</small>
+            <small>
+                <span class="fa fa-calendar"></span> 
+                {{ post.date | date: "%Y, %b %-d" }}
+            </small>
         </div>
 
         <div class="post-content">

@@ -5,3 +5,8 @@ category: {{ category }}
 tags: {{ tags }}
 author: {{ author }}
 ---
+
+simple description...
+<!--more-->
+
+more content here...

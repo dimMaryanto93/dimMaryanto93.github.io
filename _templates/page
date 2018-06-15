@@ -1,4 +1,5 @@
 ---
-layout: {{ layout }}
+layout: home
 title: "{{ title }}"
+permalink: /pages/{{ title | downcase }}
 ---
