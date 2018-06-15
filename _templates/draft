@@ -3,4 +3,5 @@ layout: {{ layout }}
 title: "{{ title }}"
 category: {{ category }}
 tags: {{ tags }}
+author: {{ author }}
 ---
