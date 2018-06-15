@@ -8,7 +8,7 @@ permalink: /pages/categories
     <ul id="arsip" class="list-group list-group-flush">
         {% for post in site.posts %} 
             {% unless post.next %}
-                <li>
+                <li style="list-style: none;">
                     <i class="fa fa-calendar-o"></i>
                     <span id="{{ post.date | date: '%Y-%b' }}" class="post-list-header">
                         {{ post.date | date: '%B %Y' }}
@@ -23,7 +23,8 @@ permalink: /pages/categories
                 {{ post.next.date | date: '%Y - %B' }}
             {% endcapture %} 
             {% if year != nyear %}
-                <li>
+                <br>
+                <li style="list-style: none;">
                     <i class="fa fa-calendar-o"></i>
                     <span id="{{ post.date | date: '%Y-%b' }}">
                         {{ post.date | date: '%B %Y' }}
