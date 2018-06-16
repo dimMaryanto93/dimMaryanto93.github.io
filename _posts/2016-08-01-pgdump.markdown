@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to export file sql using pgdump"
+title: "Export file sql using pgdump"
 date: 2016-08-01T09:42:45+07:00
 category: Database
 tags: 
