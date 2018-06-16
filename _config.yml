@@ -33,7 +33,7 @@ gist:
   noscript: false
 
 permalink: /notes/:categories/:title
-paginate_path: page-:num/
+paginate_path: /pages/page-:num
 
 plugins:
   - jekyll-feed
