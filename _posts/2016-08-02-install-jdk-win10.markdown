@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Install Oracle JDK 8 di Windows 10"
-date: 2018-06-16T11:13:51+07:00
+date: 2016-08-02T11:13:51+07:00
 category: java
 tags: 
 - Oracle
