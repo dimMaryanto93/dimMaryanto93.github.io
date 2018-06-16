@@ -1,3 +1,3 @@
 $('document').ready(function(){
-    $( ".post-content img" ).addClass("mx-auto d-block");
+    $( ".post-content img" ).addClass("mx-auto d-block img-fluid");
 });
