@@ -2,7 +2,7 @@
 layout: post
 title: "Install PostgreSQL on Windows 10"
 date: 2016-07-31T07:10:38+07:00
-category: Database
+category: Windows10
 tags: 
 - PostgreSQL
 - Database

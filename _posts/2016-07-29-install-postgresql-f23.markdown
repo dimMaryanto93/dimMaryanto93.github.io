@@ -2,7 +2,7 @@
 layout: post
 title: "Install PostgreSQL on Fedora 23"
 date: 2016-07-29T06:47:56+07:00
-category: Database
+category: Fedora23
 tags: 
 - PostgreSQL
 - Database

@@ -2,7 +2,7 @@
 layout: post
 title: "Install Oracle 11g XE di Windows 10"
 date: 2016-08-02T10:31:49+07:00
-category: Database
+category: Windows10
 tags: 
 - Database
 - Oracle
