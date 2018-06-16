@@ -2,7 +2,7 @@
 layout: post
 title: "You should be, after fresh install Ubuntu 16.04 LST"
 date: 2016-08-01T07:57:15+07:00
-category: Linux
+category: ubuntu-16.04
 tags:
 - Linux
 - Ubuntu 

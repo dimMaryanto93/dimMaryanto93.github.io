@@ -2,7 +2,7 @@
 layout: post
 title: "Download video youtube via Command line / Terminal"
 date: 2016-08-01T08:32:20+07:00
-category: Download Manager
+category: other
 tags:
 - Download
 - Youtube 
