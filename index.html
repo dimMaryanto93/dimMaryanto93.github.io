@@ -18,7 +18,7 @@ layout: home
                 {{ post.tags | join: ', ' }}
             </small>
         </div>
-
+        <br>
         <div class="post-content">
             {% if post.content contains '<!--more-->' %} 
                 {{ post.content | split:'<!--more-->' | first }}
