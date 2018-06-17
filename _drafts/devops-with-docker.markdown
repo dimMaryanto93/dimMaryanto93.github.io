@@ -1,12 +1,11 @@
 ---
 layout: post
-title: "Http Basic with Spring Security"
-category: web
+title: "Devops with docker"
+category: docker
 tags: 
-- Security
-- Web
-- Springframework
-- Java
+- Devops
+- Docker
+- Virtual machine
 author: Dimas Maryanto
 ---
 
