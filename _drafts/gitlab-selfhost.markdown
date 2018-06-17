@@ -8,6 +8,8 @@ tags:
 - gitlab
 - ubuntu
 author: Dimas Maryanto
+references:
+comments: true
 ---
 
 simple description...

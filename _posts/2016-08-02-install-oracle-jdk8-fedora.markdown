@@ -9,6 +9,8 @@ tags:
 - JDK
 - Fedora
 author: Dimas Maryanto
+references:
+comments: true
 ---
 
 Untuk install Oracle JDK di Fedora sebenarnya ada banyak cara salah satunya menggunakan software Fedy, Fedy adalah penyedia software-software yang digunakan untuk mempermudah proses installasi sama halnya seperti via ppa klo di UBuntu. tpi disini saya tidak akan menggunakan Fedy tapi menggunakan cara manual saja supaya apa? supaya anda tau proses mengginstallnya menggunakan package management fedora yaitu ```rpm```. OK sekarang kita download dulu file installernya sama seperti di Windows masuk ke [website oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html) kemudian pilih sesuai platform, karena saya pake Fedora version 64bit jadi saya pilih yang ```linux-x64.rpm``` pilih yang extensionnya **.rpm** ya!. seperti gambar berikut:

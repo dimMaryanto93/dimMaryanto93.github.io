@@ -9,6 +9,8 @@ tags:
 - Fedora
 - Java
 author: Dimas Maryanto
+references:
+comments: true
 ---
 
 Pastikan anda telah menginstall Oracle JDK dan setup JAVA_HOME klo belum silahkan install dulu di [artike berikut]({% post_url 2016-08-02-install-oracle-jdk8-fedora %}), setelah setting Path JAVA_HOME kemudian kita buka terminal kemudian masukan perintah berikut

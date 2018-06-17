@@ -7,7 +7,9 @@ tags:
 - Networking
 - Ubuntu
 - TCP/IP
-author:
+author: Dimas Maryanto
+references:
+comments: true
 ---
 
 Halo, saat pertama kali masuk kantor saya ditugasin untuk ngurusin Server, 

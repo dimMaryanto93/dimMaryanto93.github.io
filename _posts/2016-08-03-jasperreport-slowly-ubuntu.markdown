@@ -9,6 +9,8 @@ tags:
 - Linux
 - Ubuntu 16.04
 author: Dimas Maryanto
+references:
+comments: true
 ---
 
 ![jasperreport studio]({{site.baseurl}}/assets/img/posts/jaspersoft-slow/logo.png)

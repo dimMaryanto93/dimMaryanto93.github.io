@@ -9,6 +9,8 @@ tags:
 - Ubuntu
 - Java
 author: Dimas Maryanto
+references:
+comments: true
 ---
 
 Sekarang saya mau setting di Linux UBuntu. Kalo di ubuntu sih sebenernya gampang kita bisa install via ppa dengan menambahkan ```ppa:webupd8team/java``` berikut perintahnya

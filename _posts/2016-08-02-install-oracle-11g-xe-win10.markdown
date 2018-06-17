@@ -8,6 +8,8 @@ tags:
 - Oracle
 - Express Edition
 author: Dimas Maryanto
+references:
+comments: true
 ---
 
 Halo nah kali ini saya mau share bagimana cara install Oracle 11g XE atau Oracle 11g Express Edition, Oracle 11g ini sebenarya ada 3 versi yaitu

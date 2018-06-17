@@ -9,6 +9,8 @@ tags:
 - Apache
 - Maven
 author: Dimas Maryanto
+references:
+comments: true
 ---
 
 ![Apache Maven]({{site.baseurl}}/assets/img/posts/install-maven-win10/logo.png)

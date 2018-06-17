@@ -9,6 +9,8 @@ tags:
 - continues integration
 - yml
 author: Dimas Maryanto
+references:
+comments: true
 ---
 
 simple description...

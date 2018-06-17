@@ -8,6 +8,8 @@ tags:
 - JDK
 - Java
 author: Dimas Maryanto
+references:
+comments: true
 ---
 
 kali ini saya akan membuat atau membahas hal-hal apa aja yang harus di _setup_ untuk ngoding dengan bahasa pemograman Java berikut ulasannya tetang bagaimana cara setup Java Development Environtment pada Sistem Operasi Windows 10.

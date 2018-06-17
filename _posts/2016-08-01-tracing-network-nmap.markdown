@@ -7,6 +7,8 @@ tags:
 - Network
 - TCP/IP
 author: Dimas Maryanto
+references:
+comments: true
 ---
 
 Halo, kali ini saya mau membahas software untuk men-tracing networking seperti contohnya mengetahui port, ip-address, mac-address yang terhubung dalam satu network atau lebih yaitu dengan menggunakan program `nmap`

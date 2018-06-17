@@ -3,8 +3,12 @@ layout: {{ layout }}
 title: "{{ title }}"
 date: {{ date }}
 category: {{ category }}
-tags: {{ tags }}
+tags: 
+- {{ tags }}
 author: {{ author }}
+references:
+- {{ ref }}
+comments: true
 ---
 
 simple description...

@@ -8,6 +8,8 @@ tags:
 - Database
 - SQL
 author: Dimas Maryanto
+references:
+comments: true
 ---
 
 ![postresql logo]({{ site.baseurl }}/assets/img/posts/install-postgresql-f23/postgresql.png){:height="200px" width="260px"}

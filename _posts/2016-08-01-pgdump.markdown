@@ -8,6 +8,8 @@ tags:
 - PostgreSQL
 - SQL
 author: Dimas Maryanto
+references:
+comments: true
 ---
 
 Halo kali ini saya mau share bagaimana cara export data dari database ke file ```.sql``` dengan menggunakan PgAdminIII dan perintah ```pg_dump```, Ok langsung aja kita praktek tapi sebelum itu kita harus siapkan dulu database, tabel, dan datanya yaitu sebagai berikut:

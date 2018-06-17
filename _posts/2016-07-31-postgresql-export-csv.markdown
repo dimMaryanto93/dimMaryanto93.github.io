@@ -8,6 +8,8 @@ tags:
 - Database
 - SQL
 author: Dimas Maryanto
+references:
+comments: true
 ---
 
 Halo, kali ini saya membahas tentang cara meng-export data dari sebuah table dari database PostgreSQL menggunakan perintah `COPY`.

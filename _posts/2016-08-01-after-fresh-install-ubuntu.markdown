@@ -7,6 +7,8 @@ tags:
 - Linux
 - Ubuntu 
 author: Dimas Maryanto
+references:
+comments: true
 ---
 
 ![logo ubuntu 17.04 lts]({{site.baseurl}}/assets/img/posts/after-install-ubuntu-17.04/logo.png)

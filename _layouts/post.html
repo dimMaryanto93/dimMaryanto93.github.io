@@ -3,25 +3,59 @@ layout: home
 ---
 
 <article itemscope itemtype="http://schema.org/BlogPosting">
-    <h3>
+    <h3 id="post-title">
         {{ page.title }}
     </h3>
-    <small>
+    <small id="post-published">
         <span class="fa fa-calendar"></span>
         {{ page.date | date: '%A, %d %B %Y' }}
     </small>
     &nbsp;
-    <small>
+    <small id="post-author">
         <span class="fa fa-user"></span>
         {{ page.author }}
     </small>
     &nbsp;
-    <small> 
+    <small id="post-tags"> 
         <span class="fa fa-tags"></span>
         {{ page.tags | join: ', '}}
     </small>
     <hr>
-    <div class="post-content">
+    <div id="post-content" class="post-content">
         {{content}}
     </div>
+    {% if page.references.size >= 1 %}
+    <div id="references">
+        <h4>Referensi</h4>
+        <ul class="list-group">
+            {% for ref in page.references %}
+            <li class="list-group-item"><a class="list-group-item-action" href="{{ref}}" target="_blank">{{ref}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    <hr>
+    {% if page.comments %}
+    <div id="comments">
+        <div id="disqus_thread"></div>
+        <script>        
+            var disqus_config = function () {
+                this.page.url = '{{ site.baseurl }}';
+                this.page.identifier = '{{ post.url }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://dimas-maryanto.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+        </script>
+        <noscript> 
+            Please enable JavaScript to view the 
+            <a href="https://disqus.com/ref_noscript">
+                comments powered by Disqus.
+            </a>
+        </noscript>            
+    </div>
+    {% endif %}
 </article>

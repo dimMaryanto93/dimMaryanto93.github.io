@@ -8,6 +8,8 @@ tags:
 - remote
 - ssh
 author: Dimas Maryanto
+references:
+comments: true
 ---
 
 Halo, kali ini saya mau membahas tentang cara menggakes data dalam sebuah sistem 

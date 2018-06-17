@@ -2,8 +2,12 @@
 layout: {{ layout }}
 title: "{{ title }}"
 category: {{ category }}
-tags: {{ tags }}
+tags: 
+- {{ tags }}
 author: {{ author }}
+references:
+- {{ ref }}
+comments: true
 ---
 
 simple description...
