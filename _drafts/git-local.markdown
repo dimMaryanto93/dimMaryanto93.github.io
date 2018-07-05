@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Flow version control system di local"
+title: "Version control system di local"
 category: git
 tags: 
 - version control system
@@ -32,6 +32,7 @@ Zaman now, perusaahan-perusahaan mewajibkan developer untuk memahami version con
 
 Ada beberapa Istilah yang yang harus di pahami oleh developer yaitu seperti berikut:
 
+- `init`
 - `add`
 - `commit`
 - `reset`
@@ -43,4 +44,33 @@ Ada beberapa Istilah yang yang harus di pahami oleh developer yaitu seperti beri
 - `detached`
 - `log`
 
+## init
+
+Perintah `init` adalah perintah untuk membuat project git, perintah ini biasanya hanya dilakukan satu kali saja yaitu pada saat folder yang anda inginkan menjadi project git (terdapat folder `.git` dalam root project).
+
+printahnya: 
+
+```bash
+git init
+```
+
+## add
+
+Perintah `add` biasanya digunakan untuk melakukan indexing terhadap file, atau istilah lainya melakukan system tracking terhadap perubahan suatu file. contoh pengunaannya adalah sebagai berikut:
+
+```bash 
+git add filename.ext
+```
+
+atau anda dapat melakukan traking filenya lebih dari satu file
+
+```bash
+git add filename1.ext filename2.ext dst..
+```
+
+atau selain itu juga anda bisa menambahkan semua filenya berubah dengan menggunakan perintah seperti berikut:
+
+```bash
+git add .
+```
 
