@@ -1,0 +1,174 @@
+---
+layout: post
+title: "Version control system dengan GIT"
+date: 2018-06-08T13:28:40+07:00
+category: git
+tags: 
+- version control system
+- git
+author: Dimas Maryanto 
+references:
+- https://git-scm.com
+comments: true
+---
+
+![git flow]({{site.baseurl}}/assets/img/posts/git-flow/flow.png)
+
+Version control system, atau singkatan dari vcs adalah sebuah control terhadap beberapa file yang dapat diatur versi atau mungkin anda pasti tau fitur di Microsoft Office yaitu **Autosave** atau klo di dunia game balapan yaitu **Checkpoint**? 
+
+<!--more-->
+
+Yap sama halnya dengan istilah di balapan game-game kita bisa kembali ke **savepoint** sebelumnya jika apa yang telah kita kerjakaan terjadi corrupt atau reset ke **checkpoint** tertentu.
+
+Ada beberapa aplikasi untuk mengimplementasikan version control system, diantarnya:
+
+- git
+- apache subversion (SVN)
+- Mercurial
+
+
+## Git Version Control System
+
+Zaman now, perusaahan-perusahaan mewajibkan developer untuk memahami version control minimum menggunakan git. Git Version Control System, mengapa menggunakan git? jawabanya yaitu open-source, mudah digunakan dan banyak di implementasikan oleh perusaahan besar.
+
+Ada beberapa Istilah yang yang harus di pahami oleh developer yaitu seperti berikut:
+
+- `init`
+- `add`
+- `status`
+- `commit`
+- `log`
+- `branch`
+- `checkout`
+- `reset`
+- `tags`
+- `merge`
+
+## init
+
+Perintah `init` adalah perintah untuk membuat project git, perintah ini biasanya hanya dilakukan satu kali saja yaitu pada saat folder yang anda inginkan menjadi project git (terdapat folder `.git` dalam root project).
+
+printahnya: 
+
+```bash
+git init
+```
+
+## add
+
+Perintah `add` biasanya digunakan untuk melakukan indexing terhadap file, atau istilah lainya melakukan system tracking terhadap perubahan suatu file. contoh pengunaannya adalah sebagai berikut:
+
+```bash 
+git add filename.ext
+```
+
+atau anda dapat melakukan traking filenya lebih dari satu file
+
+```bash
+git add filename1.ext filename2.ext dst..
+```
+
+atau selain itu juga anda bisa menambahkan semua filenya berubah dengan menggunakan perintah seperti berikut:
+
+```bash
+git add .
+```
+
+## status
+
+Perintah `status` itu digunakan untuk mengecek status database git engine, atau perubahan file yang terjadi seperti status file belum di commit, status up to date dan lain-lain. Penggunaannya seperti berikut:
+
+```bash
+git status
+```
+
+## commit
+
+Perintah `commit` digunakan untuk mengimpan perubahan terhadap satu atau lebih file secara permanen atau melakukan checkpoint seperti pada game yang saya ceritakan di awal tadi. Cara penggunaan perintahnya sebagai berikut:
+
+```bash
+git commit -m "commit file"
+```
+
+**note** untuk perintah `commit` ini yang paling penting adalah messagenya yaitu harus mewakili kita melakukan sesuatu, jadi jangan menggunakan kata-kata yang membuat ambigu contohnya `minor bugs`, `fixing bugs` tetapi seharusnya menyebutkan dengan detail contohnya `fixing bugs fitur a, b, c dan penambahan fitur d` atau `fixed #1 fitur x`. Dengan tujuan kita mengetahui fitur atau bugs apa saya yang sudah di fixing atau error yang telah di perbaiki.
+
+## log
+
+Perintah `log` digunakan untuk melihat daftar atau list commit yang telah dilakukan sebelumnya, nah perbedaannya dengan perintah `status` adalah jika perintah `log` melihat keseluruhan `commits` sedangkan untuk `status` melihat perubahan currently atau sekarang atau terbaru. Perintahnya seperti berikut:
+
+```bash
+git log
+```
+
+atau 
+
+```bash
+# perintah untuk menampilkan informasi yang lebih sedikit
+git log --oneline
+```
+
+## branch
+
+Perintah `branch` atau `branch` itu ibaratnya kita memiliki folder dalam satu project git. default `branch` yang kita miliki adalah `master`, kita juga bisa membuat `branch` yang kita buat sendiri artinya kita bisa membuat copy project tersebut. Perintahnya sebagai berikut:
+
+```bash
+# untuk melihat branch yang ada
+git branch
+```
+
+```bash
+# untuk membuat brach yang baru berdasarkan copy project saat ini
+git checkout -b nama-branch
+```
+
+```bash
+# untuk pindah branch
+git checkout nama-branch
+```
+
+```bash
+# untuk menghapus branch
+git branch -d nama-branch
+```
+
+**note** penggunaan nama branch biasanya menggunakan code fiture atau fixing-issue tertentu contoh `issue-01`, `bugs-020`, `issue-security-06` dan lain-lain. biasanya penggunaan branch ini adalah untuk mengembangkan fitur, fixing bugs jadi tidak menggangu branch default yaitu master, jadi ketika sudah biasanya akan di `merge` ke branch default yaitu master.
+
+## reset
+
+Perintah `reset` biasaya digunakan untuk melakukan pembatalan beberapa contohnya membatalkan indexing (`add`) supaya statusnya menjadi unstages, membatalkan commit dengan beberapa mode yaitu `soft`, `mixed`, `merge`, `keep` dan `hard`. Contoh penggunaanya seperti berikut:
+
+```bash
+# untuk melakukan unstage
+git reset
+```
+
+```bash
+# untuk mereset commit ke commit sebelumnya
+git reset [ --soft | --mixed | --merge | --keep | --hard ] commit-id
+```
+
+## tags
+
+Perintah `tags` biasayanya digunakan untuk menandai versi aplikasi seperti `releash`, `alpha`, `beta`, `releash-candidat` dan lain-lain. Contoh penggunaannya sebagai berikut:
+
+```bash
+# list tags
+git tag
+```
+
+```bash
+# membuat tags
+git tag nama-tag
+```
+
+```bash
+git tag -d nama-tag
+```
+
+## merge
+
+Perintah `merge` biasanya bisa digunakan dengan syarat memiliki lebih dari 1 branch, penggunaanya yaitu untuk menggabungkan perubahan terhadap suatu branch ke branch lainnya. Contoh penggunaannya:
+
+```bash
+git merge branch-sekarang branch-target
+```
