@@ -28,6 +28,17 @@ Docker adalah ...
 
 ![what is docker]({{site.baseurl}}/assets/img/posts/devops-docker/what-is-docker.png)
 
+## Mininum System required
+
+- Linux
+- Mac Os Sierra or lastest
+    - Mac hardware must be a 2010 or newer model, with Intel’s hardware support for memory management unit (MMU) virtualization, including Extended Page Tables (EPT) and Unrestricted Mode
+    - macOS El Capitan 10.11 and newer macOS releases are supported
+    - At least 4GB of RAM
+- your machine must have a 64-bit operating system running Windows 7 
+    - Docker for Windows requires Microsoft Hyper-V to run
+    - Virtualization must be enabled in BIOS and CPU SLAT-capable
+
 ## Docker Image
 
 Docker images adalah ibaratnya installer aplikasi
@@ -43,14 +54,3 @@ Docker volumes adalah storage / data dari aplikasi yang terinstall (docker conta
 ## Docker Compose
 
 Docker compose adalah multiple container run in paralel
-
-## Mininum System required
-
-- Linux
-- Mac Os Sierra or lastest
-    - Mac hardware must be a 2010 or newer model, with Intel’s hardware support for memory management unit (MMU) virtualization, including Extended Page Tables (EPT) and Unrestricted Mode
-    - macOS El Capitan 10.11 and newer macOS releases are supported
-    - At least 4GB of RAM
-- your machine must have a 64-bit operating system running Windows 7 
-    - Docker for Windows requires Microsoft Hyper-V to run
-    - Virtualization must be enabled in BIOS and CPU SLAT-capable
