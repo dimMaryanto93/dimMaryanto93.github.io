@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Basic setup Mikrotik koneksi dari Indihome"
+title: "Basic setup Mikrotik koneksi internet dari modem Indihome"
 date: 2018-09-02T19:48:01+07:00
 category: network
 tags: 
