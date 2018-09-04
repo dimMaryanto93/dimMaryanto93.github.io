@@ -1,0 +1,30 @@
+{
+  "name": "www.dimas-maryanto.com",
+  "version": "1.0.0",
+  "description": "website of dimas maryanto",
+  "main": "index.js",
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1",
+    "bootstrap": "^4.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimMaryanto93/dimMaryanto93.github.io.git"
+  },
+  "keywords": [
+    "jekyll",
+    "blogs",
+    "static-template"
+  ],
+  "author": "dimmaryanto93",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dimMaryanto93/dimMaryanto93.github.io/issues"
+  },
+  "homepage": "https://github.com/dimMaryanto93/dimMaryanto93.github.io#readme"
+}
