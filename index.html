@@ -19,7 +19,7 @@ layout: home
             </small>
         </div>
         <br>
-        <div class="post-content">
+        <div class="post-content container">
             {% if post.content contains '<!--more-->' %} 
                 {{ post.content | split:'<!--more-->' | first }}
                 <p>
