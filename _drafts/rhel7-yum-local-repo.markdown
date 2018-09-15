@@ -60,9 +60,9 @@ createrepo /var/www/html/repos/redhat/7/os/x86_64
 ```
 
 ```bash
-# update repository jika udah buat
-# reposync -p /var/www/html/repo -r <REPOID> -l
-# createrepo /var/www/html/repo    
+## update repository jika udah buat
+reposync -p /var/www/html/repos/redhat/7/os/x86_64 -r <REPOID> -l
+createrepo /var/www/html/repos/redhat/7/os/x86_64    
 ```
 
 Sekarang kita aktifkan dulu service `httpd` dengan perintah:
