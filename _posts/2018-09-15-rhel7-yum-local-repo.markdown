@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Local yum repository for Rhel7 / Fedora / Centos"
+date: 2018-09-15T13:38:49+07:00
 category: yum
 tags: 
 - yum
