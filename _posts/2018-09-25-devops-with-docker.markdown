@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Develoyment Operations with docker"
+title: "Devops with docker"
 date: 2018-09-25T21:16:50+07:00
 category: docker
 tags: 
