@@ -3,6 +3,7 @@ layout: post
 title: "Own your repository by Sonatype Nexus Repository"
 date: 2018-09-25T23:49:05+07:00
 category: repository
+gist: dimMaryanto93/a5820a5a4824af4723fd2096b6ca891d
 tags: 
 - Packages Management
 - Dependency
@@ -71,22 +72,9 @@ Proses installasi, betulan OS yang saya gunakan adalah Linux Ubuntu Server / Cen
     ```
 
 - Create file on `/etc/systemd/service` with name `nexus.service`:
+    
+    {% gist page.gist nexus.service %}
 
-    ```config
-    [Unit]
-    Description=nexus service
-    After=network.target
-    
-    [Service]
-    Type=forking
-    ExecStart=/opt/nexus-sonatype-oss/nexus-3.13.0-01/bin/nexus start
-    ExecStop=/opt/nexus-sonatype-oss/nexus-3.13.0-01/bin/nexus stop
-    LimitNOFILE=65536
-    Restart=on-abort
-    
-    [Install]
-    WantedBy=multi-user.target
-    ```
 - Start service nexus repository
 
     ```bash
@@ -129,35 +117,6 @@ Untuk configuration proxy atau daftar repository central yang ingin di daftarkan
 
 Untuk maven secara default dia bakalan download ke maven central, untuk meng-override setting tersebut kita buat file `settings.xml` di folder `.m2` dengan configurasi public repository yang sedang saya gunakan seperti berikut:
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<settings>
-   <mirrors>
-      <mirror>
-         <!--This sends everything else to /public -->
-         <id>nexus</id>
-         <mirrorOf>*</mirrorOf>
-         <url>http://localhost:8081/repository/maven-public/</url>
-      </mirror>
-   </mirrors>
-   <distributionManagement>
-      <repository>
-         <id>archetype</id>
-         <name>Releases</name>
-         <url>http://localhost:8081/repository/maven-releases</url>
-      </repository>
-      <snapshotRepository>
-         <id>archetype</id>
-         <name>Snapshot</name>
-         <url>http://localhost:8081/repository/maven-snapshots</url>
-      </snapshotRepository>
-   </distributionManagement>
-   <servers>
-      <server>
-         <id>nexus-releases</id>
-         <username>admin</username>
-         <password>admin123</password>
-      </server>
-   </servers>
-</settings>
-```
+{% gist page.gist settings.xml  %}
+
+Nah sekarang tinggal coba perintah maven di command promt / terminal. Jika masih ke redirect ke maven repository central perlu cek kemali lokasi file `settings.xml` sudah benar?
