@@ -1,0 +1,617 @@
+---
+layout: post
+title: "Pengenalan JDBC, Membuat CRUD sangat sederhana"
+date: 2016-07-31T00:28:43+07:00
+author: Dimas Maryanto
+category: java
+tags: 
+- Java Fundamental
+- Database
+- Mysql
+- JDBC
+author: Dimas Maryanto
+references:
+comments: true
+---
+
+Halo balik lagi di blog saya, nah kali ini sama mau share lagi tentang JDBC yaitu Java Database Connectivity. Nah JDBC ini adalah salah satu teknologi yang penting jika ingin membuat aplikasi yang berbasis Database seperti membuat aplikasi berbasis Sistem Informasi. karena konsepnya sendiri dari sistem informasi adalah
+
+* Input
+* Proses
+* Output
+
+Untuk menghandle input yang paling mudah adalah dengan menggunakan database sebenarnya bisa saja kita tanpa menggunakan database tetapi menggunakan sebuah file untuk menampung datanya tapi menurut saya itu ribet dan butuh proses panjang dalam melakukan pencarian datanya maka dari  itu disini kita menggunakan database.
+
+Konsep database sendiri dari dulu adalah mengederhanakan proses input, update, delete dan pencarian data yang bisa lebih cepat dibandingkan menggunakan file. Nah jadi langsung aja kita praktek, seperti yang telah anda ketahui saya akan menjelaskan menggunakan teknologi **Java** untuk mengakses Database yaitu dengan JDBC dengan pembahasan CRUD atau kependekan dari Create Read Update Delete dalam bahasa indonesia yaitu Tambah data, Ubah data, Baca data dan Hapus data. sebelum anda membaca artikel ini diharapkan anda telah memahami konsep SQL yaitu sebagai berikut:
+
+- Data Definition Language (CREATE, DROP, ALTER)
+- Data Manipulation Language (INSERT, UPDATE, DELETE)
+- Trancation Control Language (COMMIT, ROLLBACK)
+- SELECT
+
+Nah sekarang kita balik lagi ke topik, saya akan menggunakan sebuah IDE atau Integrated Development Environment yaitu **Netbeans**. so let's started now
+
+<!--more-->
+
+## Membuat Java Project di Netbeans
+
+ok, langsung aja buka Netbeans IDE.
+
+![Starting Netbeans IDE]({{ site.baseurl }}/assets/img/posts/java-jdbc/startup-netbeans.png)
+
+Kemudian pada menu pilih **file** -> **New Project** -> **Categories** pilih **Java Project** -> **Projects** pilih **Java Application**, maka tampilanya seperti berikut:
+
+![Java new application]({{ site.baseurl }}/assets/img/posts/java-jdbc/new-project.png)
+
+setelah itu klik **Next**. kemudian input **Project Name** ```jdbc-mysql```, **Project Location** bebas terserah anda tpi klo saya disimpan di ```home/dimMaryanto/temp/fundamental-java-belajar``` dan **unchek** untuk **Created Main Class** karena saya mau membuatnya dengan manual. maka hasilnya seperti berikut:
+
+![New Java Project]({{ site.baseurl }}/assets/img/posts/java-jdbc/source-project.png)
+
+kemudian klik **Finish**, maka Netbeans akan membuatkan kita project dengan Struktur directory seperti berikut:
+
+![Structur directory java netbeans]({{ site.baseurl }}/assets/img/posts/java-jdbc/structur-java-netbeans.png)
+
+tahap membuat project di Netbeans telah selesai, berikut nya adalah membuat database.
+
+## Membuat database dan tabel di MariaDB
+
+Untuk membuat database pada dasarnya ada banyak cara mulai dari menggunakan tools diantranya:
+
+- Netbeans editor (tab service -> database editor)
+- PhpMyAdmin (browser)
+- MySQL Workbench (sql editor buatan MySQL)
+- Command line (terminal / cmd)
+
+### Login sebagai role 'ROOT'
+
+ok, karena ini kasusnya adalah belajar jadi kita pake tools yang paling simple aja dulu yaitu command line ya tpi klo mau pake yang lain silahkan aja. so jadi kita **login dulu ke user / schema root**.
+
+```bash
+mysql -h localhost -u root -p
+```
+
+berikut outputnya:
+
+{% highlight bash %}
+Enter password: # masukan password root anda klo saya passwordnya admin
+{% endhighlight %}
+
+klo berhasil login maka tampilanya seperti berikut:
+
+{% highlight bash %}
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 3
+Server version: 10.0.23-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2015, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]>
+{% endhighlight %}
+
+ada yang aneh? jadi saya database memenggunakan MariaDB ya bukan MySQL tpi secara sql sama aja kok.
+
+### Membuat database ```jdbc_mysql```
+
+**Membuat databasenya** berikut adalah perintah sqlnya:
+
+```mysql
+create database jdbc_mysql;
+```
+
+berikut outputnya:
+
+{% highlight bash %}
+Query OK, 1 row affected (0.00 sec)
+{% endhighlight %}
+
+### Membuat table ```mahasiswa```
+
+selanjutnya adalah **membuat table**, jadi kali ini studi kasusnya adalah pendataan mahasiswa dalam sebuah universitas yang memiliki jurusan 'SI' dan 'MI'. **SI adalah Jurusan Sistem Informasi** dan **MI adalah jurusan Management Informatika**. jadi kita buat table mahasiswa yang terdiri dari NIM, Nama, Jurusan. berikut adalah perintah sqlnya:
+
+```mysql
+create table mahasiswa(
+  nim varchar(8) not null primary key,
+  nama varchar(50) not null,
+  jurusan varchar(2) not null
+) engine=InoDB;
+```
+
+Exekusi perintah tersebut maka akan menampilkan output seperti berikut:
+
+{% highlight bash %}
+Database changed
+Query OK, 0 rows affected, 2 warnings (0.19 sec)
+{% endhighlight %}
+
+setelah itu kita bisa lihat struktur table mahasiswa dengan perintah sql berikut:
+
+```mysql
+desc mahasiswa;
+```
+
+berikut outputnya:
+
+{% highlight bash %}
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| nim     | varchar(8)  | NO   | PRI | NULL    |       |
+| nama    | varchar(50) | NO   |     | NULL    |       |
+| jurusan | varchar(2)  | NO   |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+{% endhighlight %}
+
+ok setelah membuat database dan tabel di mysql kita balik lagi ke koding Java.
+
+## Membuat koneksi ke database ```jdbc_mysql``` di Mysql
+
+sebelum kita nulis koding ada baiknya kita siapkan dulu dependency-nya atau lebih sering disebut library pihak ke tiga yaitu ```MySQL JDBC Driver``` berikut adalah cara menambahkan library-nya ke class path di netbeans pada **panel Project ```jdbc_mysql```**, buka tree view kemudian anda dapat melihat terdapat ```Source Package``` dan ```Libraries```, pada item ```Libraries``` klik kanan -> **Add Libary** setelah itu cari ```MySQL JDBC Driver``` kemudian klik **Add Library** maka hasilnya seperti berikut:
+
+![Include Mysql JDBC Driver into Classpath]({{ site.baseurl }}/assets/img/posts/java-jdbc/include-mysql.png)
+
+tahap selanjutnya kita harus membuat jembatan antara Java dengan Database Mysql supaya biasa terkoneksi. yang perlu diingat adalah Netbeans itu bukan bahasa pemograman ya! jadi gini ada beberapa waktu lalu ada pertanyaan kurang lebih seperti ini
+
+> master, kang, pak or whatever lah pokoknya. bagaimana cara bikin netbeans terhubung dengan  XAMPP?
+
+nah loh, gimana binggung khan? ```XAMPP != Database Management System``` klo anda cermati XAMPP itu software paketan yang isinya biasanya Web Server untuk PHP, Database MySQL dan ada juga untuk PostgreSQL atau SQLite, Wordpress dan lain-lain.
+
+ok, saya rasa paham ya magsud saya. jadi siapkan diri anda kita sekarang akan bener-bener ngoding!. write started now.
+
+## Memulai koding Java di Netbeans
+
+pertama yang harus dilakukan adalah membuat class baru dengan nama ```MainAplikasi``` yang berfungsi sebagai kelas utama dan karena **aplikasi yang kita buat bukan aplikasi yang sifat-nya production** jadi saya mau semua dibuat dalam satu class tersebut. berikut adalah langkah-langkahnya:
+
+Pada menubar klik **file** -> **New File** -> **Categories** pilih **Java** dan **File Types** pilih **Java Class** berikut ini hasilnya:
+
+![Create New Java Class]({{ site.baseurl }}/assets/img/posts/java-jdbc/new-java-class.png)
+
+Klik **Next**, Kemudian input untuk **Class Name:** ```MainApplication```, **Location:** ```Source Packages```, **Packages:** ```belajar.jdbc``` berikut ini hasilnya:
+
+![Create New Java Class Description]({{ site.baseurl }}/assets/img/posts/java-jdbc/main-application-class.png)
+
+Klik **Finish**, maka berikut ini hasilnya:
+
+![Result class created by Netbeans IDE]({{ site.baseurl }}/assets/img/posts/java-jdbc/created-class.png)
+
+Tahap selanjutnya adalah **membuat main method** dalam class tersebut seperti berikut:
+
+{% highlight java %}
+package belajar.jdbc;
+
+public class MainApplication {
+    public static void main(String[] args) {}
+}
+{% endhighlight %}
+
+Untuk menghubungkan antara Java dengan database kita butuh objek ```java.sql.Connection``` dan ```java.sql.DriverManager```. jadi objek ```DriverManager``` digunakan untuk mengembalikan objek ```Connection``` artinya si objek ```DriverManager``` akan melakukan ping (konsep jaringan komputer) ke database apakah nama database tersebut dengan port sekian tersedia di sistem database managementnya si MySQL kalo ada maka kembalikan si objek ```Connection``` klo tidak ada kembalikan nilai ```null``` nah jadi begitu kurang lebih ceritanya tentang ```DriverManager``` dan ```Connection```. Berikut adalah implementasinya:
+
+```java
+package belajar.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class MainApplication {
+
+    public static void main(String[] args) {
+        try {
+            String url = "jdbc:mysql://localhost:3306/jdbc_mysql";
+            Connection koneksi = DriverManager.getConnection( url, "root", "admin");
+            System.out.println("Database ditemukan!");
+            koneksi.close();
+        } catch (SQLException ex) {
+            System.err.println("Database tidak ditemukan!");
+        }        
+    }
+}
+```
+
+klo **dijalankan melalui Netbeans IDE** caranya dengan klik kanan pada file ```MainApplication.java``` kemudian **Run File** atau ```Shift + F6``` maka outpunya seperti berikut:
+
+{% highlight bash %}
+run:
+Database ditemukan!
+BUILD SUCCESSFUL (total time: 0 seconds)
+{% endhighlight %}
+
+Penjelasannya dari koding diatas adalah:
+
+- URL = ```jdbc:mysql://localhost:3306/jdbc_mysql```
+  - ```jdbc``` dalam URL adalah teknologi yang dipakai menggunakan JDBC selain JDBC ada juga ODBC dan lain-lain.
+  - ```mysql``` nama database management system yaitu MySQL. selain MySQL ada lagi database yang support dengan teknologi JDBC yaitu [biasa dilihat disini](https://docs.oracle.com/cd/E19226-01/820-7688/gawms/index.html)
+  - ```localhost``` adalah tempat dimana database diinstal karena saya install dikomputer sendiri maka localhost atau bisa juga menggunakan ip address ```127.0.0.1```
+  - ```3306``` adalah port default MySQL. biasanya port ini akan berbeda setiap database lainnya misal postgresql adalah ```5432```
+  - ```jdbc_mysql``` adalah nama database di database management system.
+- DriverManager = ```DriverManager(param1, param2, param3);```
+  -  ```param1``` adalah argument untuk mementukan URL, java akan melakukan ping ke URL tersebut dan akan mengembalikan objek ```java.sql.Connection``` jika database ditemukan.
+  - ```param2``` adalah user / schema dari database.
+  - ```param3``` adalah password dari user database tersebut.
+- ```koneksi.close();```, hal ini yang **sering dilupakan oleh setiap programmer awam**. jadi setiap koneksi yang dibuka harus lah ditutup kembali karena pada dasarnya klo setiap database management system akan membuka session-nya setiap kali ada koneksi yang dipanggil. Bayangkan saja klo misal kita memanggil atau melakukan query yang tinggi (jumlah yang banyak > 1000 query) ini akan menyebebkan server database menjadi lemot karena session yang dibuka terlalu banyak maka dari itu sekali lagi yang perlu diingat adalah setiap koneksi yang dibuka setelah selasai maka harus ditutup kembali.
+
+Setelah membuat koneksi tahap selanjutnya anda dapat melakukan operasi CRUD, jadi sekarang saya mau membuat atau menambahkan data ke database terselibih dahulu. berikut ini langkah-langkahnya
+
+## Insert data ke Tabel Mahasiswa
+
+nah, sekarang kita akan mulai dengan Insert data ke database, jadi sebelum kita ngoding sebaiknya kita siapkan dulu query dan periksalah apakah query yang dibuat udah benar apa belum. berikut ini adalah query insert data untuk table mahasiswa:
+
+```mysql
+insert into mahasiswa (nim, nama, jurusan) \
+values ('10511148', 'Dimas Maryanto', 'SI');
+```
+
+setelah itu coba execuksi di database mysql, dan berikut ini adalah outpunya:
+
+{% highlight bash %}
+Query OK, 1 row affected (0.05 sec)
+{% endhighlight %}
+
+kemudian periksa apakah data yang diinsert telah masuk sesuai dengan columnnya dengan perintah tampilkan data menggunakan query select seperti berikut:
+
+```mysql
+select * from mahasiswa where nim = '10511148';
+```
+
+berikut adalah outputnya:
+
+{% highlight bash %}
++----------+----------------+---------+
+| nim      | nama           | jurusan |
++----------+----------------+---------+
+| 10511148 | Dimas Maryanto | SI      |
++----------+----------------+---------+
+1 row in set (0.00 sec)
+{% endhighlight %}
+
+jika anda perhatikan sama ya! apa yang kita input dan hasil query yang ditampilkan berdasarkan nim ```10511148```.
+
+setelah itu kita bisa melakukan koding, jadi untuk melakukan Insert data. sebenarnya ada banyak cara mulai dari menggunakan objek ```java.sql.Statement``` atau ```java.sql.PreparedStatement``` tapi disini saya sarankan menggunakan ```PreparedStatement``` karene hal tersebut bisa mengghindari salah satu serangan atau hacking dengan methode [SQL Injection](https://en.wikipedia.org/wiki/SQL_injection)
+
+Berikut adalah implementasi untuk Insert data database melalui Java dengan PreparedStatement:
+
+```java
+package belajar.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class MainApplication {
+
+    public static void main(String[] args) {
+        try {
+            Connection koneksi = DriverManager.
+              getConnection("jdbc:mysql://localhost:3306/jdbc_mysql", "root", "admin");
+
+            String sql = "INSERT INTO mahasiswa (nim, nama, jurusan) VALUES (?,?,?)";
+            PreparedStatement ps = koneksi.prepareStatement(sql);
+            System.out.println("sebelum set value: "+ps.toString());
+            ps.setString(1, "10511150");
+            ps.setString(2, "Riansyah Permana");
+            ps.setString(3, "SI");
+            System.out.println("setelah set value: " + ps.toString());
+            ps.executeUpdate();
+
+            ps.close();
+            koneksi.close();
+        } catch (SQLException ex) {
+            System.err.println("Database tidak ditemukan!");
+        }
+    }
+}
+```
+
+setelah itu coba jalankan dengan Run File dari Netbeans IDE, berikut ini hasilnya:
+
+{% highlight bash %}
+run:
+sebelum set value: com.mysql.jdbc.JDBC4PreparedStatement@26a1ab54: INSERT INTO mahasiswa (nim, nama, jurusan) VALUES (** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **)
+setelah set value: com.mysql.jdbc.JDBC4PreparedStatement@26a1ab54: INSERT INTO mahasiswa (nim, nama, jurusan) VALUES ('10511150','Riansyah Permana','SI')
+BUILD SUCCESSFUL (total time: 0 seconds)
+{% endhighlight %}
+
+ok, nah klo anda perhatikan hasil eksekusi java tersebut berjalan dengan baik ok jadi sekaran kita tinggal cek bagaimana data di database apakah sesuia dengan apa yang kita input berikut ini adalah querynya:
+
+```mysql
+select * from mahasiswa where nim = '10511150';
+```
+
+berikut ini adalah hasilnya:
+
+{% highlight bash %}
++----------+------------------+---------+
+| nim      | nama             | jurusan |
++----------+------------------+---------+
+| 10511150 | Riansyah Permana | SI      |
++----------+------------------+---------+
+1 row in set (0.00 sec)
+{% endhighlight %}
+
+kalo dilihat apa yang diinput sesuia ya. ok selanjutnya kita bahas tentang koding insert tadi baris-perbaris.
+
+Pembahasananya:
+
+- ```String sql = "INSERT INTO mahasiswa (nim, nama, jurusan) VALUES (?,?,?)";```
+- ```PreparedStatement ps = koneksi.prepareStatement(sql);```
+  - ```PreparedStatement``` ini sebenarnya sama seperti ```Statement``` hanya dia memiliki keunggulan di keamanan query. jadi ```PreparedStatement``` ini biasanya digunakan untuk query yang menggunakan parameter masukan seperti INSERT, UPDATE, DELETE, SELECT menggunakan clausa WHERE.
+  - ```koneksi.prepareStatement(sql);``` jadi untuk menggunakan PreparedStatement kita harus menyipkan dulu SQL mentah? magsudnya mentah apa?, jadi magsud saya **perintah SQL yang valuenya tidak didefinisikan secara langsung di sql atau bahasa kerennya hardcode** contohnya seperti berikut untuk sql yang sifatnya _hardcode_ ```INSERT ... VALUES ('10511148','Dimas M','SI')```. jadi sebagai gantinya menggunakan _question mark_ ```?``` untuk menujukan suatu kolom tertentu di database. nanti kita akan bahas lebih lanjut di artikel berikutnya.
+- ```System.out.println("sebelum set value: "+ps.toString());``` perintah berikut hanya menampilkan keterangan aja hasilnya seperti berikut ```sebelum set value: com.mysql.jdbc.JDBC4PreparedStatement@26a1ab54: INSERT INTO mahasiswa (nim, nama, jurusan) VALUES (** NOT SPECIFIED **,** NOT SPECIFIED **,** NOT SPECIFIED **)``` jdi kalo diperhatikan lagi dalam ```VALUES()``` bernilai ```** NOT SPECIFIED **``` artinya nilainya belum diset.
+- ```ps.setString(1, "10511150");``` method ini pada intinya adalah untuk melakukan set nilai pada kolom berdasarkan index yang diset tersebut.
+  - method ```setString(arg1, arg2)``` adalah method yang merepresentasikan tipe data nilai yang akan dimasukan contohnya pada kolom pertama (```nim```) khan bernilai ```varchar(8)``` itu artinya ```varchar``` bisa bernilai angka, huruf, simbol maka untuk memparsing ke tipe data tersebut ke database menggunakan method ```setString()```.
+  - argument pertama ```1``` menandakan dia akan mengisi nilai pada kolumn ```nim```, jika di isi dengan ```2``` maka dia mengisi nilai pada kolom ```nama``` dan jika di ini dengan ```3``` maka dia akan mengisi nilai pada kolom ```jurusan```.
+  - argument ke 2 ```10511150``` dia adalah nilainya jadi pada argument ke ```1``` dan argument ke 2 bernilai tersebut kesimpulanya adalah ```nim``` diisi dengan ```10511150```.
+- ```System.out.println("setelah set value: " + ps.toString());``` sama seperti penjelasan sebelumnya hanya menampilkan log. bahwa datanya telah terisi apa belum.
+- ```ps.executeUpdate();``` method ini digunakan untuk melakukan perubahan data pada database seperti INSERT, UPDATE, dan DELETE.
+
+ok, bagaimana mudah khan? klo ada yang mau tanyakan sialahkan email saya saja insyaaloh _fast response_ (kalo tidak sibuk ya...). nah selanjutnya kita akan bahas tentang update data.
+
+## Update data pada Tabel Mahasiswa
+
+Untuk update data pada dasarnya sama seperti insert hanya yang berbeda adalah query dan paramenternya. contoh kasusnya disini saya mau mengupdate jurusan yang nimnya = ```10511148``` menjadi ```IF```. ok berikut tahapanya:
+
+pastikan data dengan nim ```10511148``` tersedia di table mahasiswa, silahkan cek dulu kalo belum ada berikut sqlnya:
+
+```mysql
+insert into mahasiswa (nim, nama, jurusan) values ('10511148', 'Dimas Maryanto', 'SI');
+```
+
+Sekarang kita buat querynya dulu untuk mengupdate data mahasiswa dengan nim ```10511148``` untuk kolom yang mau diupdate adalah jurusan dengan nilai ```IF``` berikut sqlnya:
+
+```mysql
+UPDATE mahasiswa SET jurusan = 'IF' WHERE nim = '10511148';
+```
+
+setelah itu coba eksekusi, berikut outpunya:
+
+{% highlight bash %}
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+{% endhighlight %}
+
+kemudian coba lihat hasil perubahannya dengen perintah select berikut:
+
+```mysql
+select * from mahasiswa where nim = '10511148';
+```
+
+berikut outpunya:
+
+{% highlight bash %}
++----------+----------------+---------+
+| nim      | nama           | jurusan |
++----------+----------------+---------+
+| 10511148 | Dimas Maryanto | IF      |
++----------+----------------+---------+
+1 row in set (0.00 sec)
+{% endhighlight %}
+
+ok, data berhasil terupdate ya! dari jurusan awalnya adalah ```SI``` sekarang menjadi ```IF```. selanjutnya kita buat kodingnya:
+
+```java
+package belajar.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class MainApplication {
+
+    public static void main(String[] args) {
+        try {
+            Connection koneksi = DriverManager
+              .getConnection("jdbc:mysql://localhost:3306/jdbc_mysql", "root", "admin");
+
+            String sql = "UPDATE mahasiswa SET jurusan = ? WHERE nim = ?";
+            PreparedStatement ps = koneksi.prepareStatement(sql);
+            System.out.println("sebelum set value: "+ps.toString());
+            ps.setString(1, "IF");
+            ps.setString(2, "10511150");
+            System.out.println("setelah set value: " + ps.toString());
+            ps.executeUpdate();
+
+            ps.close();
+            koneksi.close();
+        } catch (SQLException ex) {
+            System.err.println("Database tidak ditemukan!");
+        }
+    }
+}
+```
+
+setelah itu coba jalankan dengan Run File dari Netbeans IDE, berikut ini hasilnya:
+
+{% highlight bash %}
+run:
+sebelum set value: com.mysql.jdbc.JDBC4PreparedStatement@26a1ab54: UPDATE mahasiswa SET jurusan = ** NOT SPECIFIED ** WHERE nim = ** NOT SPECIFIED **
+setelah set value: com.mysql.jdbc.JDBC4PreparedStatement@26a1ab54: UPDATE mahasiswa SET jurusan = 'IF' WHERE nim = '10511150'
+BUILD SUCCESSFUL (total time: 1 second)
+{% endhighlight %}
+
+jadi dari output diatas jalannya. ok selanjutnya kita cek apakah nim ```10511150``` jurusannya telah terupdate menjadi ```IF``` berikut sqlnya:
+
+```mysql
+select * from mahasiswa where nim = '10511150';
+```
+
+berikut hasilnya:
+
+{%  highlight bash %}
++----------+------------------+---------+
+| nim      | nama             | jurusan |
++----------+------------------+---------+
+| 10511150 | Riansyah Permana | IF      |
++----------+------------------+---------+
+1 row in set (0.00 sec)
+{% endhighlight %}
+
+ok berarti update data berhasilnya.
+
+Penjelasan dari koding tersebut tidak akan saya bahas kembali karena pada dasarnya sama seperti insert data. selanjutnya kita akan membuat fungsi hapus sebuah data seorang mahasiswa.
+
+## Hapus data pada Tabel Mahasiswa
+
+Untuk hapus data, pada dasarnya sama aja seperti insert dan update hanya yang beda adalah querynya, seperti biasa sebelum kita ngoding dengan Java kita siapkan dulu data dan query untuk hapus data. jadi kasusnya saya mau menghapus data mahasiswa yang memiliki nim ```10511148```, pastikan nim ```10511148``` udah ada di dalam tabel mahasiswa jika belum ada berikut sqlnya:
+
+```mysql
+insert into mahasiswa (nim, nama, jurusan) values ('10511148', 'Dimas Maryanto', 'SI');
+```
+
+ok, setelah adatanya ada kita buat querynya dulu. berikut adalah perintah sql untuk menghapus data mahasiswa yang memiliki nim ```10511148```:
+
+```mysql
+DELETE FROM mahasiswa WHERE nim = '10511148';
+```
+
+setelah itu coba eksekusi, berikut output yang dihasilkan:
+
+{% highlight bash %}
+Query OK, 1 row affected (0.04 sec)
+{% endhighlight %}
+
+kemudian kita cek ada gak datanya jika select menggunakan perintah berikut:
+
+```mysql
+select * from mahasiswa where nim = '10511148';
+```
+
+berikut hasilnya:
+
+{% highlight bash %}
+Empty set (0.00 sec)
+{% endhighlight %}
+
+jadi perintah deletenya udah bener ya!. nah sekarang baru kita ngoding dengan Java. berikut adalah implementasinya:
+
+```java
+package belajar.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class MainApplication {
+
+  public static void main(String[] args) {
+    try {
+      Connection koneksi = DriverManager
+        .getConnection("jdbc:mysql://localhost:3306/jdbc_mysql", "root", "admin");
+
+      String sql = "DELETE FROM mahasiswa WHERE nim = ?";
+      PreparedStatement ps = koneksi.prepareStatement(sql);
+      System.out.println("sebelum set value: " + ps.toString());
+      ps.setString(1, "10511150");
+      System.out.println("setelah set value: " + ps.toString());
+      ps.executeUpdate();
+
+      ps.close();
+      koneksi.close();
+    } catch (SQLException ex) {
+        System.err.println("Database tidak ditemukan!");
+    }
+  }
+}
+```
+
+setelah itu coba jalankan dengan Run File dari Netbeans IDE, berikut ini hasilnya:
+
+{% highlight bash %}
+run:
+sebelum set value: com.mysql.jdbc.JDBC4PreparedStatement@26a1ab54: DELETE FROM mahasiswa WHERE nim = ** NOT SPECIFIED **
+setelah set value: com.mysql.jdbc.JDBC4PreparedStatement@26a1ab54: DELETE FROM mahasiswa WHERE nim = '10511150'
+BUILD SUCCESSFUL (total time: 0 seconds)
+{% endhighlight %}
+
+ok, jadi kita lihat outpunya tidak ada error ya berarti data berhasil dihapus dari table mahasiswa. selanjutnya kita akan membuat fungsi untuk menampilkan semua data dari table mahasiswa.
+
+## Menampilkan semua data Mahasiswa
+
+ok, sekarang kita akan menampilkan semua data dari table mahasiswa. nah sekarang kita bisa menggunakan objek ```Statement``` karena tidak memiliki paramenter masukan seperti fungsi yang sebelumnya dibahas. tpi sebenernya bebas aja mau pake ```PreparedStatement``` atau mau pake ```Statement``` juga ok, tpi kali ini saya bahas dulu ya dengan menggunakan ```Statement``` supaya ada gambaran perbedaannya. Seperti biasa kita buat dulu query untuk menampilkan semua data dari tabel mahasiswa, berikut adalah perintah sqlnya tpi pastikan telah melakukan insert data kembali karena kita telah menghapus ke 2 data tadi di fungsi sebelumnya:
+
+```mysql
+
+INSERT INTO mahasiswa
+  VALUES  ('10511148','Dimas','SI'),
+          ('10511150','Riansyah','SI'),
+          ('10511173','Hanif','SI');
+```
+
+berikut outputnya yang dihasilkan:
+
+{% highlight bash %}
+Query OK, 3 rows affected (0.03 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+{% endhighlight %}
+
+selanjutnya kita tampilkan semua data yang telah diinsert barusan, berikut perintah sqlnya:
+
+```mysql
+select * from mahasiswa;
+```
+
+setelah itu coba di eksekusi, maka outputnya akan seperti berikut:
+
+{% highlight bash %}
++----------+----------+---------+
+| nim      | nama     | jurusan |
++----------+----------+---------+
+| 10511148 | Dimas    | SI      |
+| 10511150 | Riansyah | SI      |
+| 10511173 | Hanif    | SI      |
++----------+----------+---------+
+3 rows in set (0.00 sec)
+{% endhighlight %}
+
+jadi kita memiliki 3 record data ya. nah sekarang kita langsung aja koding menggunakan Java. berikut implementasinya:
+
+```java
+package belajar.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class MainApplication {
+
+  public static void main(String[] args) {
+    try {
+      Connection koneksi = DriverManager
+        .getConnection("jdbc:mysql://localhost:3306/jdbc_mysql", "root", "admin");
+
+      String sql = "select * from mahasiswa";
+      Statement st = koneksi.createStatement();
+      ResultSet rs = st.executeQuery(sql);
+      while (rs.next()) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("NIM: ").append(rs.getString(1)).append(", ");
+        sb.append("Nama: ").append(rs.getString("nama")).append(", ");
+        sb.append("Jurusan: ").append(rs.getString(3));
+        System.out.println(sb.toString());
+      }
+      koneksi.close();
+    } catch (SQLException ex) {
+      System.err.println("Database tidak ditemukan!");
+    }
+  }
+}
+```
+
+setelah itu coba jalankan dengan Run File dari Netbeans IDE, berikut ini hasilnya:
+
+{% highlight bash %}
+run:
+NIM: 10511148, Nama: Dimas, Jurusan: SI
+NIM: 10511150, Nama: Riansyah, Jurusan: SI
+NIM: 10511173, Nama: Hanif, Jurusan: SI
+BUILD SUCCESSFUL (total time: 0 seconds)
+{% endhighlight %}
+
+ok mungkin sekian dulu pembahasan tentang JDBC sederhana ini, Semoga bermanfaat~.
