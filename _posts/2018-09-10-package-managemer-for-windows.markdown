@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Package Manager for Windows like an Linux Users"
-date: 2018-07-28T18:48:28-07:00
+date: 2018-09-10T18:48:28-07:00
 category: windows10
 tags: 
 - package-manager
