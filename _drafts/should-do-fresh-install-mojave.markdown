@@ -183,6 +183,6 @@ sudo npm install -g @angular/cli typescript
 ## Jekyll
 
 ```bash
-gem install bundler bundle jekyll octopress
+gem install bundler jekyll octopress
 ```
 
