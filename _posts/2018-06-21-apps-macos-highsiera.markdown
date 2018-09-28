@@ -2,7 +2,7 @@
 layout: post
 title: "Aplikasi yang berguna di Mac OS High Siera"
 date: 2018-06-21T19:34:24+07:00
-category: macos
+category: mac-os
 tags: 
 - Mac
 - Macbook
