@@ -3,6 +3,7 @@ layout: post
 title: "Install PostgreSQL on Fedora 23"
 date: 2016-07-29T06:47:56+07:00
 category: Fedora-23
+gist: dimMaryanto93/62ffa0d81f3835a4e9401baf14590cd2
 tags: 
 - PostgreSQL
 - Database
@@ -101,19 +102,10 @@ tahap selanjutnya jika servicenya udah jalan seperti output diatas kita harus up
 $ sudo gedit /var/lib/pgsql/data/pg_hba.conf
 {% endhighlight %}
 
-setelah file tersebut terbuka di ```gedit``` maka ubahlah **method** menjadi ```md5``` seperti berikut:
+setelah file tersebut terbuka di ```gedit``` maka ubahlah **method** menjadi ```md5``` dan `address` menjadi `0.0.0.0/24` seperti berikut:
 
-```ini
-# TYPE  DATABASE        USER            ADDRESS                 METHOD
-
-# "local" is for Unix domain socket connections only
-local   all             all                                     md5
-# IPv4 local connections:
-host    all             all             127.0.0.1/32            md5
-# IPv6 local connections:
-host    all             all             ::1/128                 ident
-```
-
+{% gist page.gist pg_hba.conf %}
+ 
 kemudian restart servicenya
 
 {% highlight bash %}
