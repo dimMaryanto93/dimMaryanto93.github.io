@@ -29,7 +29,9 @@ layout: home
         <h4>Referensi</h4>
         <ul class="list-group">
             {% for ref in page.references %}
-            <li class="list-group-item"><a class="list-group-item-action" href="{{ref}}" target="_blank">{{ref}}</a></li>
+            <li class="list-group-item">
+                <a class="list-group-item-action" href="{{ref}}" target="_blank">{{ref}}</a>
+            </li>
             {% endfor %}
         </ul>
     </div>
