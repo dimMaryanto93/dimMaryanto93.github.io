@@ -3,6 +3,7 @@ layout: post
 title: "Reverse Proxy and Load balancing to Backend in Apache httpd"
 date: 2018-09-26T23:49:54+07:00
 category: httpd
+gist: dimMaryanto93/382f8793eec86ce9507e4626651dfdc4
 tags: 
 - Reverse Proxy
 - Load Balancing
@@ -88,42 +89,7 @@ sudo apt-get install apache2
 
 dan berikut adalah configurasi reverse proxy, modif file `/etc/apache2/sites-enabled/001-default.conf` tambahkan seperti berikut:
 
-```conf
-Listen 0.0.0.0:80
-
-<VirtualHost 0.0.0.0:80>
-	ServerAdmin webmaster@localhost
-	DocumentRoot /var/www/html
-
-    ProxyVia On
-    ProxyRequests On
-
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-	CustomLog ${APACHE_LOG_DIR}/access.log combined
-
-    <Proxy "balancer://registration">
-        BalancerMember  "http://192.168.1.100:8080"
-        BalancerMember  "http://192.168.1.101:8080"
-        BalancerMember  "http://192.168.1.102:8080"
-        BalancerMember  "http://192.168.1.103:8080"
-        BalancerMember  "http://192.168.1.104:8080"
-    </Proxy>
-
-    <Proxy "balancer://resource">
-        BalancerMember  "http://192.168.3.100:8080"
-        BalancerMember  "http://192.168.3.101:8080"
-    </Proxy>
-    
-    ProxyPass           "/registration"     "balancer://registration"
-    ProxyPassReverse    "/registration"     "balancer://registration"
-
-    ProxyPass           "/resource"         "balancer://resource"
-    ProxyPassReverse    "/resource"         "balancer://resource"
-
-    ProxyPass           "/auth"             "http://192.168.2.100:8080"
-    ProxyPassReverse    "/auth"             "http://192.168.2.100:8080"	
-</VirtualHost>
-```
+{% gist page.gist 001-default.conf %}
 
 Nah sekarang tinggal restart aja web-server apache2 dengan perintah berikut:
 
@@ -149,37 +115,7 @@ dnf install httpd
 
 dan berikut adalah configurasi reverse proxy, modif file `/etc/httpd/conf/httpd.conf` tambahkan di akhir baris dengan script seperti berikut:
 
-```conf
-<VirtualHost 0.0.0.0:80>
-	ServerAdmin webmaster@localhost
-	DocumentRoot /var/www/html
-
-    ProxyVia On
-    ProxyRequests On
-
-    <Proxy "balancer://registration">
-        BalancerMember  "http://192.168.1.100:8080"
-        BalancerMember  "http://192.168.1.101:8080"
-        BalancerMember  "http://192.168.1.102:8080"
-        BalancerMember  "http://192.168.1.103:8080"
-        BalancerMember  "http://192.168.1.104:8080"
-    </Proxy>
-
-    <Proxy "balancer://resource">
-        BalancerMember  "http://192.168.3.100:8080"
-        BalancerMember  "http://192.168.3.101:8080"
-    </Proxy>
-    
-    ProxyPass           "/registration"     "balancer://registration"
-    ProxyPassReverse    "/registration"     "balancer://registration"
-
-    ProxyPass           "/resource"         "balancer://resource"
-    ProxyPassReverse    "/resource"         "balancer://resource"
-
-    ProxyPass           "/auth"             "http://192.168.2.100:8080"
-    ProxyPassReverse    "/auth"             "http://192.168.2.100:8080"	
-</VirtualHost>
-```
+{% gist page.gist httpd.conf %}
 
 Nah sekarang tinggal restart aja web-server httpd servicenya dengan perintah berikut:
 
