@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Software Record desktop for Microsoft Windows"
-date: 2016-09-01T00:00:00+07:00
+date: 2016-09-02T00:00:00+07:00
 category: screen-record
 tags: 
 - Windows10
