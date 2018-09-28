@@ -2,6 +2,7 @@
 layout: post
 title: "Ubuntu 18.04, Setup network Static/DHCP ip-address"
 date: 2018-09-27T23:26:28+07:00
+gist: dimMaryanto93/8a66211a151402dc04ce9c4c0d7a3a09
 category: ubuntu-18.04
 tags: 
 - Ubuntu
@@ -53,35 +54,13 @@ Nah sekarang saatnya configurasi network static/DHCP
 
 Edit file `/etc/netplan/01-network-manager-all.yaml` menjadi seperti berikut:
 
-```yml
-network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    enp3s0:
-      addresses: [192.168.88.50/24] # ip address static
-      dhcp4: no # matikan dhcp4
-      dhcp6: no
-      gateway4: 192.168.88.1 # route gateway to modem                     
-      nameservers:
-        addresses: [8.8.8.8,8.8.4.4] # dns server
-      optional: false
-```
+{% gist page.gist 01-network-manager-all.static.yml %}
 
 ## DHCP IP-ADDRESS
 
 Edit file `/etc/netplan/01-network-manager-all.yaml` menjadi seperti berikut:
 
-```yml
-network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    enp3s0:
-      dhcp4: yes
-      dhcp6: no
-      optional: false
-```
+{% gist page.gist 01-network-manager-all.dhcp.yml  %}
 
 Setelah semua dikonfigurasi, kita **reload / apply network konfigurasinya** dengan perintah:
 
