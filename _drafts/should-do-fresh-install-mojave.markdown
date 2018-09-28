@@ -141,3 +141,48 @@ Aplikasi perekam aktifitas desktop ini masih sama seperti di postingan sebelumny
 
 Aplikasi ini sering saya gunakan untuk mendokumentasikan arsitektur aplikasi, perancangan data, dll pokoknya berkaitan dengan menggambar deh.
 
+## Oracle Java JDK 8
+
+Download file `.dmg` from [oracle website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+
+Just double clik and install it.
+
+## Git
+
+Untuk install git, cukup mudah buka terminal kemudian ketik ja perintah berikut:
+
+```bash
+git status
+```
+
+Nanti bakalan muncul xcode-select form supaya di install. Setelah di install
+
+```bash
+git config --global user.name username
+git config --global user.email email-address
+```
+
+## Homebrew
+
+```bash 
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+Software should be install
+
+```bash
+brew install wget vim tmux youtube-dl maven gradle npm node
+```
+
+## angular/cli
+
+```bash
+sudo npm install -g @angular/cli typescript
+```
+
+## Jekyll
+
+```bash
+gem install bundler bundle jekyll octopress
+```
+
