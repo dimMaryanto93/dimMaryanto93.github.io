@@ -3,6 +3,7 @@ layout: post
 title: "Tipe data, Variabel dan Scope di Bahasa"
 date: 2016-07-31T00:10:30+07:00
 category: java
+gist: dimMaryanto93/519ff848171cb9924338d28343cb1989
 tags: 
 - Java Fundamental
 author: Dimas Maryanto
@@ -41,18 +42,7 @@ Gimana lumayan banyak khan? tapi kali ini saya tidak akan membahas semua tapi ha
 
 Tipe data integer ini pada dasarnya adalah data yang hanya dapat menampung nilai atau bilangan positif dan negatif dengan jangka ```-2,147,483,648``` sd ```2,147,483,648```. ok sekarang kita buat kodingnya:
 
-```java
-public class VariableInteger {
-  public static void main(String[] args) {
-    Integer bilPositif = 10;
-    Integer bilNegatif = -5;
-    Integer pertambahan = bilPositif + bilNegatif;
-    System.out.println("Bilangan Positif : "+ bilPositif);
-    System.out.println("Bilangan Negatif : "+ bilNegatif);
-    System.out.println("Perjumlahan antara bilPositif dan bilNegatif adalah "+ pertambahan);
-  }
-}
-```
+{% gist page.gist VariabelInteger.java  %}
 
 Berikut outputnya:
 
@@ -72,18 +62,7 @@ Jadi penjelasnya seperti berikut:
 
 Tipe data Double ini pada dasarnya adalah sama seperti ```Integer``` namun memiliki kelebihan yaitu berbentuk pecahan dengan jangka ```-1.7976931348623157E308``` sd ```1.7976931348623157E308```. ok sekarang kita buat kodingnya:
 
-```java
-public class VariableDouble {
-  public static void main(String[] args) {
-    Double bilPositif = new Double(10);
-    Double bilNegatif = -5.4;
-    Double pertambahan = bilPositif + bilNegatif;
-    System.out.println("Bilangan Positif : "+ bilPositif);
-    System.out.println("Bilangan Negatif : "+ bilNegatif);
-    System.out.println("Perjumlahan antara bilPositif dan bilNegatif adalah "+ pertambahan);
-  }
-}
-```
+{% gist page.gist VariabelDouble.java %}
 
 Berikut outputnya:
 
@@ -102,18 +81,7 @@ Berikut penjelasnya:
 
 Tipe data Float ini pada dasarnya adalah sama seperti ```Double``` namun memiliki jangka lebih rendah yaitu ```1.4E-45``` sd ```3.4028235E38```. ok sekarang kita buat kodingnya:
 
-```java
-public class VariableFloat {
-  public static void main(String[] args) {
-    float bilPositif = new Float(10);
-    float bilNegatif = -5.4F;
-    float pertambahan = bilPositif + bilNegatif;
-    System.out.println("Bilangan Positif : "+ bilPositif);
-    System.out.println("Bilangan Negatif : "+ bilNegatif);
-    System.out.println("Perjumlahan antara bilPositif dan bilNegatif adalah "+ pertambahan);
-  }
-}
-```
+{% gist page.gist VariabelFloat.java %}
 
 Berikut outputnya:
 
@@ -133,15 +101,7 @@ berikut adalah penjelasanya:
 tipe data **String** ini dapat mencakup semua karakter yang ada di keyboard contohnya ```A```, ```3.2```, ```//``` dan lain-lain. ok kita buat kodingnya:
 tipe data **String** ini dapat mencakup semua karakter yang ada di keyboard contohnya ```A```, ```3.2```, ```//``` dan lain-lain. ok kita buat kodingnya:
 
-```java
-public class VariableString {
-  public static void main(String[] args){
-    String fistName = "Dimas";
-    String lastName = "Maryanto";
-    System.out.println(nama + " "+ lastName);
-  }
-}
-```
+{% gist page.gist VariabelString.java %}
 
 berikut outputnya:
 
@@ -160,19 +120,7 @@ Berikut penjelasan berdasarkan output tersebut:
 
 di Java tipe data Date sebenarnya ada lumayan banyak contohnya ```java.sql.Date```, ```java.util.Date```, ```java.time.LocalDate``` (mulai java-1.8) dan library external seperti ```org.jodatime``` tapi biasanya klo saya bekerja di desktop (JavaFX) menggunakan ```java.time.LocalDate``` klo bekerja di web menggunakan ```java.lang.Date```. ok kita buat kodingnya:
 
-```java
-import java.time.LocalDate;
-import java.util.Date;
-
-public class VariableDate {
-  public static void main(String[] args) {
-    LocalDate localDate = LocalDate.now();
-    System.out.println("java.time.LocalDate : "+localDate);
-    Date date = new Date();
-    System.out.println("java.util.Date : "+date);
-  }
-}
-```
+{% gist page.gist VariabelDate.java %}
 
 Berikut outputnya berdasarkan output diatas:
 
@@ -191,19 +139,7 @@ Nah barusan kita telah mengenal beberapa tipe data Variabel diantaranya Integer,
 
 untuk local variabel ini sebenarnya kita telah peraktekan sebelumnya, tpi gpp kita bahas aja. ok local variabel itu biasanya dideklarasikan didalam method atau dalam scope terdalam contohnya kita khan membuat ```class``` kemudian didalam ```class``` terdiri dari method-method, nah didalam salah satu method itu lah kita mendefinisikan variabel hal itu disebut local variabel. berikut adalah sample codenya:
 
-```java
-public class LocalVariabel {
-
-  public static void main(String[] args) {
-    String nama = "Dimas Maryanto";
-    System.out.println(nama);
-  }
-
-  public void fungsiLain(){
-    // System.out.println(nama); # variabel nama tidak dikenali  
-  }
-}
-```
+{% gist page.gist VariabelLocal.java %}
 
 Berikut klo dijalankan maka outputnya:
 
@@ -219,21 +155,7 @@ Variabel dengan nama ```nama``` adalah local variabel jadi variabel tersebut mem
 
 Global variabel seperti yang kita tahu klo variabel bisa diakses oleh member dalam kelas tersebut seperti method, inner class dan lain-lain. untuk lebih jelasnya berikut ini adalah sample codenya:
 
-```java
-public class GlobalVariabel {
-
-  private static String nama = "Dimas Maryanto";
-
-  public static void main(String[] args) {
-    System.out.println("ini dari main : "+ nama);
-    fungsiLain();
-  }
-
-  public static void fungsiLain(){
-    System.out.println("Ini dari fungsiLain : "+ nama);
-  }
-}
-```
+{% gist page.gist VariabelGlobal.java %}
 
 Jika dijalankan maka akan menampilkan output seperti berikut:
 
@@ -248,24 +170,11 @@ Berdasarkan output tersebut berikut adalah penjelasanya:
 * Variabel ```nama``` di isi dengan nilai ```Dimas Maryanto``` kemudian dipanggil di ```main()``` kemudian didalamnya memanggil fungsi lagi dengan nama ```fungsiLain()```, di dalam ```fungsiLain()``` memanggil variabel ```nama```.
 * outputnya manghasilkan ```ini dari main : Dimas Maryanto``` kemudian menanggil method ```fungsiLain()``` yang menampilkan ```ini dari fungsiLain : Dimas Maryanto```.
 
-## Arguments atau Parameter variabel
+## Argument atau Parameter variabel
 
 Argument sebenarnya sama seperti local variabel karena hanya dikenal oleh internal method tersebut tetapi nilainya di inject dari external. berikut ini adalah implementasinya:
 
-```java
-public class ParamsVariabel {
-
-  private static String nama = "Dimas";
-
-  public static void main(String[] args) {
-    fungsiLain("Maryanto");
-  }
-
-  public static void fungsiLain(String nama){
-    System.out.println(ParamsVariabel.nama + " " + nama);
-  }
-}
-```
+{% gist page.gist VariabelParameter.java %}
 
 Jika dijalankan maka akan menampilkan output seperti berikut:
 
