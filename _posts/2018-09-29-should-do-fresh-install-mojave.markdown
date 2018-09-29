@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "You should do, after fresh install macOS Mojave"
+date: 2018-09-29T15:17:08+07:00
 category: mac-os
 tags: 
 - Macbook pro
@@ -141,76 +142,28 @@ Aplikasi perekam aktifitas desktop ini masih sama seperti di postingan sebelumny
 
 Aplikasi ini sering saya gunakan untuk mendokumentasikan arsitektur aplikasi, perancangan data, dll pokoknya berkaitan dengan menggambar deh.
 
-## Oracle Java JDK 8
+## CCleaner
 
-Download file `.dmg` from [oracle website](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+![Autodesk Skectbook]({{site.baseurl}}/assets/img/posts/mac-os-mojave/ccleaner.jpeg)
 
-Just double clik and install it.
+Aplikasi pembersin ini wajib ada, karena lumayan buat ngebersihin cache browser, file yang gak terpakai dan sebagai uninstaller juga. [Download di sini](https://www.ccleaner.com/ccleaner/download)
 
-## Git
+## Feedly
 
-Untuk install git, cukup mudah buka terminal kemudian ketik ja perintah berikut:
+![Feedly]({{site.baseurl}}/assets/img/posts/mac-os-mojave/feedly.png)
 
-```bash
-git status
-```
+Aplikasi ini adalah rss client, biasanya saya baca2 artikel di situ tanpa harus mengunjugin website-webiste yang saya favoritekan. Klo kita subcribe website yang kita daftarkan otomatis akan tampiljuga artikel terbaru dari website tersebut. [Download disini](https://feedly.com/apps.html)
 
-Nanti bakalan muncul xcode-select form supaya di install. Setelah di install
+## Gitter 
 
-```bash
-git config --global user.name username
-git config --global user.email email-address
-```
+![Autodesk Skectbook]({{site.baseurl}}/assets/img/posts/mac-os-mojave/gitter.png)
 
-## Homebrew
+Aplikasi gitter ini, biasanya saya suka ngobrol sama komunitas yang ada di github repository seperti spring-boot, hibernate, angular dan lain-lain. [Download disini](https://gitter.im/apps)
 
-```bash 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
+## Paragon NTFS
 
-Berikut adalah software-software yang bisa kita install dari brew package manager
+![Paragon NTFS]({{site.baseurl}}/assets/img/posts/mac-os-mojave/paragon-ntfs.png)
 
-```bash
-brew install    wget \ 
-                vim \
-                tmux \
-                youtube-dl \
-                maven \
-                gradle \
-                npm \
-                node
-```
+Secara default mac os, tidak bisa menulis di hardisk yang formatnya NTFS jadi harus FAT32 klo mau di share ke platform lain. Karena macos punya partisi format sendiri yaitu `APFS` dan `Mac OS Extended`. Jadi dengan aplikasi ini kita bisa nulis, baca dan klo ada kerusakan pun kita bisa repair (untuk versi pro). [Download disini](/home/dimasm93/Workspace/dimas-maryanto.com/www.dimas-maryanto.com/assets/img/posts/mac-os-mojave/paragon-ntfs.png)
 
-## angular/cli
-
-Jika anda ada developer, angular dengan angular-cli. 
-
-```bash
-sudo npm install -g @angular/cli typescript
-```
-
-## Jekyll
-
-Software ini biasanya saya gunakan untuk membuat tulisan di blog. Seperti website ini dibagun di atas Octopress dan Jekyll
-
-```bash
-gem install bundler jekyll octopress
-```
-
-## Jetbrants Toolbox
-
-Software jetbraint, ini adalah software yang paling sering saya gunakan bahkan setiap hari. Product yang paling saya akan install adalah IntelliJ Idea.
-
-## Browser
-
-Untuk browser, sebagai web developer kita harus punya semua perkakas perang yaitu web browser jadi gak updol klo gak punya semua web browser
-
-- Safari
-- Chrome
-- Firefox
-
-## Emulator
-
-Untuk bermain VM saya meggunakan Oracle Virtualbox, dan untuk running android device menggunakan Genymotion
-
-
+Mungkin segini dulu untuk base penggunaan macOS, selanjutnya kita bahas software untuk software engineer / programmer.
