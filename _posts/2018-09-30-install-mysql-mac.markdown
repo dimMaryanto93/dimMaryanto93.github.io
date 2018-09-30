@@ -77,6 +77,16 @@ Setelah itu kita konek menggunakan mysql-client / mysql cli di terminal dengan p
 /usr/local/mysql/bin/mysql -h localhost -u root -p
 ```
 
+Nah supaya kita bisa manggil mysql-client hanya dengan perintah `mysql` jadi kita tambhakan ke env `~/.bash_profile` dengan script seperti berikut:
+
+```conf
+## at begin
+export MYSQL_HOME=/usr/local/mysql
+
+## at last script
+export PATH=$PATH:$MYSQL_HOME/bin
+```
+
 Hasilnya seperti berikut:
 
 ![mac service started]({{site.baseurl}}/assets/img/posts/mysql-on-macos/mysql-connect-client.png)
