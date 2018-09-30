@@ -14,7 +14,7 @@ comments: true
 
 ![mysql-logo]({{site.baseurl}}/assets/img/posts/mysql-on-macos/mysql-logo.jpg){: width="400px" }
 
-Database yang satu ini gak boleh ketinggalan, karena hampir semua applikasi di PT. Tabeldata mostly pake database MySQL tpi selain itu juga ada yang pake PostgreSQL dan MS SQL Server. Langung aja install MySQL server pertama Download dulu installernya dari [website oracle mysql](https://dev.mysql.com/downloads/)
+Database yang satu ini gak boleh ketinggalan, karena hampir semua aplikasi di PT. Tabeldata mostly pake database MySQL tpi selain itu juga ada yang pake PostgreSQL dan MS SQL Server. Langung aja install MySQL server pertama Download dulu installernya dari [website oracle mysql](https://dev.mysql.com/downloads/)
 
 Mysql database on macOS Mojave, berikut adalah cara installasinya
 
