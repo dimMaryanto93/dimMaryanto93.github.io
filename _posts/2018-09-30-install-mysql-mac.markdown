@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Install MySQL database on macOS Mojave"
+date: 2018-09-30T13:55:28+07:00
 category: mac-os
 tags: 
 - macOS Mojave
