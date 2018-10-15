@@ -75,7 +75,7 @@ Karena di VM kita cuman buat 2 virtual disk jadi ya kita pilih keduanya supaya w
 
 ![general settings vm]({{site.baseurl}}/assets/img/posts/ssd-raid-0/vm-install-raid0-diskselected.png)
 
-Untuk membuat partisi pertama kali kita buat dulu **mouting point** untuk mapping `/` dengan mengclick `+` dibwahnya kemudian kita pilih devices click **Modify** kemudian select kedua device tersebut. 
+Untuk membuat partisi pertama kali kita buat dulu **mouting point** untuk mapping `/` dengan mengclick `+` dibawahnya kemudian kita pilih devices click **Modify** kemudian select kedua device tersebut. 
 
 ![general settings vm]({{site.baseurl}}/assets/img/posts/ssd-raid-0/vm-raid0-partision-type.png)
 
@@ -97,11 +97,11 @@ Partisinya berada di `/dev/mapper/isw_dbaaeehadj_Volume1` gabungan antara `/dev/
 
 ![branchmark disk via terminal]({{site.baseurl}}/assets/img/posts/ssd-raid-0/branchmark-disk.png){: width="500px" }
 
-Dengan configurasi RAID-0 kita dikasih performa yang luarbiasa kenceng. Tapi ada kelemahanya klo terjadi crash pada salah satu drive maka semua drive pada volume tersebut tidak akan bisa.
+Dengan configurasi RAID-0 kita dikasih performa yang luar biasa kenceng. Tapi ada kelemahanya klo terjadi crash pada salah satu drive maka semua drive pada volume tersebut tidak akan bisa.
 
 Summary using RAID-0 configuration
 
 - Kita bisa menambahkan slot klo SSD yang kita gunakan sudah penuh kapasitasnya tanpa harus merusak partis (format ulang)
-- Performa, Speed read and write lebih cepat sesuai branchmark yang saya berikan bisa 2x lebih cepat dari biaanya.
-- Sayangnya klo salah satu drive rusak maka semua partisi yang ada di volume tersebut.
+- Performa, Speed read and write lebih cepat sesuai branchmark 2x lebih cepat dari biasanya.
+- Sayangnya klo salah satu drive rusak maka semua partisi yang ada di volume tersebut ikutan rusak juga.
 
