@@ -1,39 +1,57 @@
---- 
-layout: default 
+---
+layout: default
 ---
 
 <div class="container">
     <div class="row">
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="mx-auto d-block img-fluid">
-                        <img id="profilePicture"  height="320px" src="{{"/assets/img/profile.jpg" | prepend: site.baseurl }}" alt="Profile" class="img-rounded">
-                    </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <h5 class="container text-muted">
-                            {{site.data.profile.namaDepan}} {{site.data.profile.namaBelakang}} 
-                            (@{{site.data.profile.userId}})
-                    </h5>
-                </div>
-                <div class="row">
-                    <div class="container">
-                        <span class="fa fa-id-card"/> {{site.data.profile.perusahaan}}<br/> 
-                        <small>({{site.data.profile.jabatan}})</small>
-                    </div>
-                </div>
-                <hr/>
-                <div class="row">
-                    <div class="container">
-                        <p class="text-justify">
-                            {{site.data.profile.biodata}}
-                        </p>
-                    </div>
+        <div class="col-md-8 text-justify">
+            {{content}}
+        </div>
+        <div class="col-md-4 d-none d-sm-block">
+            <div class="row">
+                <div class="mx-auto d-block img-fluid">
+                    <img id="profilePicture" height="320px" src="{{"/assets/img/profile.jpg" | prepend: site.baseurl }}"
+                        alt="Profile" class="img-rounded">
                 </div>
             </div>
-            <div class="col-md-8 text-justify">
-                {{content}}
+            <br />
+            <div class="row">
+                <h5 class="container text-muted">
+                    {{site.data.profile.namaDepan}} {{site.data.profile.namaBelakang}}
+                    (@{{site.data.profile.userId}})
+                </h5>
             </div>
+            <div class="row">
+                <div class="container">
+                    <span class="fa fa-id-card" /> {{site.data.profile.perusahaan}}<br />
+                    <small>({{site.data.profile.jabatan}})</small>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="container">
+                    <p class="text-justify">
+                        {{site.data.profile.biodata}}
+                    </p>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="container">
+                    <h3>Recent posts</h3>
+                    <ul class="list-group">
+                        {% for post in site.posts limit:15 %}
+                        <li class="list-group-item list-group-item-action">
+                            <span class="small">
+                                {{post.date | date:'%d / %b / %Y'}}
+                            </span>
+                            <br />
+                            <a href="{{ post.url | prepand: site.baseurl }}">{{post.title}}</a>
+                        </li>
+                        {% endfor%}
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
