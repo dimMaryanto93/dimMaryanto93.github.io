@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Http Basic with Spring Security"
+title: "Secure Web application with HTTP Basic"
 category: web
 tags: 
 - Security
@@ -12,7 +12,7 @@ references:
 comments: true
 ---
 
-simple description...
+Jaman memang udah banyak berubah, dulu masih jaman2nya aplikasi dekstop
 <!--more-->
 
 more content here...
