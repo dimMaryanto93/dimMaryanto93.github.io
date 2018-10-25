@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Self hosting, Central GIT Repository"
+date: 2018-10-25T23:31:16+07:00
 category: gitlab
 tags: 
 - Version Control System
