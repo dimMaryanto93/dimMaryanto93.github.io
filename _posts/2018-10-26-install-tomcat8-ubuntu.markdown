@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "How to install Apache Tomcat8 & Monitoring tools"
+date: 2018-10-26T02:45:31+07:00
 category: web-server
 tags: 
 - Web Server
