@@ -79,3 +79,13 @@ Nah, sekarang kita bisa browse ke port `8888` ke remote address tomcat8 hasilnya
 Klo saya akses [http://{IP-REMOTE-TOMCAT8}:{PORT}/manager](http://localhost:8888/manager) kemudian input username `tomcat` passwordnya `tomcat` maka anda akan diarahkan ke halaman berikut:
 
 ![tomcat manager]({{site.baseurl}}/assets/img/posts/tomcat8-ubuntu/tomcat-manager.png)
+
+## Deploy war
+
+Untuk deploy aplikasi `war` ke tomcat8 cukup copy-paste `file.war` ke folder `/var/lib/tomcat8/webapps/` tpi sebelum itu kita harus berikan akses dulu supaya warnya bisa di copy ke folter tersebut dengan perintah berikut:
+
+```bash
+sudo chmod -R 777 /var/lib/tomcat8/webapps/
+```
+
+Setelah itu baru kita bisa deploy aplikasi ke tomcat.
