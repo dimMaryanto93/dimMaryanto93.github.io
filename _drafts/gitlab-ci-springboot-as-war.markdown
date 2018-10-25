@@ -30,3 +30,5 @@ So, langung ja kita pertama harus siapkan yaitu seperti berikut:
 
 <!--more-->
 
+
+
