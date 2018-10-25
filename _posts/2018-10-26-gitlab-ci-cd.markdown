@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Gitlab CI/CD to Automated Deployment 'like a Boss'"
+date: 2018-10-26T00:57:20+07:00
 category: gitlab
 tags: 
 - Git
