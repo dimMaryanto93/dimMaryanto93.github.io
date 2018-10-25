@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Gitlab CI/CD for Springboot deploy as war to Tomcat"
+date: 2018-10-26T03:57:42+07:00
 category: gitlab
 tags: 
 - Git
