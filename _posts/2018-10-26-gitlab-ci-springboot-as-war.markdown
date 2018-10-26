@@ -24,21 +24,14 @@ Setelah sebelumnya kita telah, membuat deploy automated dengan gitlab CI/CD untu
 
 So, langung ja kita pertama harus siapkan yaitu seperti berikut:
 
-- Web Server, such as Tomcat, Jboss EAP, Jetty dan lain-lain
-- Project springboot
-- Gitlab repository
-- Gitlab CI
-
-<!--more-->
-
-## Setup
-
 - How to [Install tomcat8 on ubuntu server]({% post_url 2018-10-26-install-tomcat8-ubuntu %})
 - Create project springboot from scratch, to generate project spring [click here](https://start.spring.io/)
 - Create new repository, with name `gitlab-ci-springboot-as-war` and set level `public`
 - Adjust project spring-boot to tradisional deployment
 - Push to repository
 - Create `.gitlab-ci.yml` file to deploy `war` application into Tomcat8
+
+<!--more-->
 
 ## Create project springboot
 
@@ -113,27 +106,27 @@ Secara defautl springboot akan menggunakan package sebagai `.jar`, sekarang saya
 
 - Edit file main class `SpringbootAsWarApplication.java` seperti berikut:
 
-```java
-package com.maryanto.dimas.example;
+    ```java
+    package com.maryanto.dimas.example;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.boot.builder.SpringApplicationBuilder;
+    import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-@SpringBootApplication
-public class SpringbootAsWarApplication extends SpringBootServletInitializer {
+    @SpringBootApplication
+    public class SpringbootAsWarApplication extends SpringBootServletInitializer {
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(SpringbootAsWarApplication.class);
+        @Override
+        protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+            return application.sources(SpringbootAsWarApplication.class);
+        }
+
+        public static void main(String[] args) {
+            SpringApplication.run(SpringbootAsWarApplication.class, args);
+        }
     }
-
-    public static void main(String[] args) {
-        SpringApplication.run(SpringbootAsWarApplication.class, args);
-    }
-}
-```
+    ```
 
 Setelah itu commit dan push kembali
 
