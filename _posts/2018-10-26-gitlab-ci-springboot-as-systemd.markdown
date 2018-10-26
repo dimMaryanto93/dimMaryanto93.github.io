@@ -276,7 +276,7 @@ copy-artifact:
     stage: deploy
     script:
         - 'cp -u target/*.jar applications/'
-        - 'sudo systemctl restart gitlab-ci.service'
+        - 'sudo systemctl restart springboot-systemctl.service'
     only:
         - master
 ```
