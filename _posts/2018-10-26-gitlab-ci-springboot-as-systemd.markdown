@@ -95,7 +95,6 @@ Maka file `springboot-systemctl.jar` akan terbuat di dalam folder `target/` sepe
 ```bash
 target
 ├── springboot-systemctl.jar
-├── springboot-systemctl.jar.original
 ```
 
 Ada 2 `.jar` file kita pilih aja yang `springboot-systemctl.jar` kemudian kita coba jalankan dengan perintah seperti berikut:
@@ -165,7 +164,7 @@ scp target/springboot-systemctl.jar app@192.168.1.23:~/applications/springboot-s
 ## log output
 # scp target/gitlab-ci.jar.original app@192.168.1.23:~/applications/springboot-systemctl.jar
 # app@192.168.1.23's password: 
-# gitlab-ci.jar.original                        100% 3492     1.6MB/s   00:00 
+# springboot-systemctl.jar                        100% 3492     1.6MB/s   00:00 
 ```
 
 Setelah file `springboot-systemctl.jar` siap, kita siapkan dulu script unix systemd yang disimpan di folder `/etc/systemd/system/` dengan nama `springboot-systemctl.service` seperti berikut:
