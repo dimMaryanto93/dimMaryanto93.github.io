@@ -36,7 +36,6 @@ permalink: /notes/:categories/:title
 paginate_path: /pages/page-:num
 
 plugins:
-  - jekyll-feed
   - jekyll-gist
   - jekyll-paginate
 
