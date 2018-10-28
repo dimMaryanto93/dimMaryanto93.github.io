@@ -41,31 +41,28 @@ layout: home-right
                 <li class="page-item">
                     <a class="page-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">
                         <span class="fa fa-caret-left" />
-                        Sebelumnya
+                        Selanjutnya
                     </a>
                 </li>
                 {% else %}
                 <li class="disabled page-item">
                     <a class="page-link">
                         <span class="fa fa-caret-left" />
-                        Sebelumnya
+                        Selanjutnya
                     </a>
                 </li>
                 {% endif %}
-                <li class="page-item">
-                    <a class="page-link">Halaman {{ paginator.page }} dari {{ paginator.total_pages }}</a>
-                </li>
                 {% if paginator.next_page %}
                 <li class="page-item">
                     <a class="page-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">
-                        Selanjutnya
+                        Sebelumnya
                         <span class="fa fa-caret-right" />
                     </a>
                 </li>
                 {% else %}
                 <li class="disabled">
                     <a class="page-link">
-                        Selanjutnya
+                        Sebelumnya
                         <span class="fa fa-caret-right" />
                     </a>
                 </li>
