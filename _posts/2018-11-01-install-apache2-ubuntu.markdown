@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Install apache2 on Ubuntu 18.04"
+date: 2018-11-01T21:28:29+07:00
 category: ubuntu-18.04
 tags: 
 - Ubuntu 18.04
