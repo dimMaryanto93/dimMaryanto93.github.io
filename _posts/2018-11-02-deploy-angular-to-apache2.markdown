@@ -14,10 +14,10 @@ comments: true
 
 ![logo angular, httpd, nodejs]({{site.baseurl}}/assets/img/posts/deploy-angular-apache2/logo.png)
 
-Sebelumnya kita udah [install nodejs, npm & angular-cli]({% post_url 2018-11-01-install-nodejs-ubuntu %}) sekarang kita akan membuat project dengan `angular-cli` kemudian mendeploy ke **Apache2**
+Sebelumnya kita mulai Ada beberapa yang harus kita siapakan yaitu diantaranya:
 
-Ada beberapa yang harus kita siapakan yaitu diantaranya:
-
+- [Install apache2 on ubuntu]({% post_url 2018-11-01-install-apache2-ubuntu %})
+- [Install nodejs & angular-cli]({% post_url 2018-11-01-install-nodejs-ubuntu %})
 - Template project (generate new project from angular-cli)
 - Build template project (compile/compress project from angular-cli)
 - Setup apache2 using documentRoot 
