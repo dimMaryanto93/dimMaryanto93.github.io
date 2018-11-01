@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Deploy Angular CLI template to Apache2"
+date: 2018-11-02T00:35:58+07:00
 category: apache2
 tags: 
 - Angular CLI
