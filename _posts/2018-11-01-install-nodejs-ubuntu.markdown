@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Install nodejs & npm di Ubuntu 18.04"
+date: 2018-11-01T22:51:04+07:00
 category: ubuntu-18.04
 tags: 
 - Ubuntu
