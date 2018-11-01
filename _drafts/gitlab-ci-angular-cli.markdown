@@ -1,17 +1,18 @@
 ---
 layout: post
-title: "Install nginx on Ubuntu 18.04"
-category: ubuntu-18.04
+title: "Gitlab CI, for deploy Angular CLI template project"
+category: gitlab
 tags: 
-- Ubuntu
-- Web Server
-- Nginx
+- Gitlab
+- CI/CD
+- Frontend
+- Angular
+- angular-cli
 author: Dimas Maryanto
 references:
 - 
 comments: true
 ---
-
 
 simple description...
 <!--more-->

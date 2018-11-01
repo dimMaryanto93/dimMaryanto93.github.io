@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Gitlab CI/CD for Springboot deploy as service Systemd"
+title: "Gitlab CI/CD for deploy spring-boot as service Systemd"
 date: 2018-10-26T15:42:04+07:00
 category: gitlab
 tags: 
