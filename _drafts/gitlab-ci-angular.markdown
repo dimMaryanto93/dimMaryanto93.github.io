@@ -1,15 +1,18 @@
 ---
 layout: post
-title: "Gitlab-ci-angular"
-category: 
+title: "Gitlab CI, for deploy Angular CLI template project"
+category: gitlab
 tags: 
-- 
-author: 
+- Gitlab
+- CI/CD
+- Frontend
+- Angular
+- angular-cli
+author: Dimas Maryanto
 references:
 - 
 comments: true
 ---
-
 
 simple description...
 <!--more-->
