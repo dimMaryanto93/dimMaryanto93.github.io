@@ -13,7 +13,7 @@ references:
 comments: true
 ---
 
-Ada kalanya, ketika browser dari tetapi load element resource seperti js, css, image, html lamabat karena size of file is too large. Nah di Apache httpd kita bisa compress dengan dengan menggunakan `mod_gzip` atau `mod_deflate` tpi kita harus check dulu modulenya udah terpasang belum di Apache httpd-nya.
+Ada kalanya, ketika load element resource seperti js, css, image, html karena size of file is too large maka yang terjadi adalah performa akan menurun dari segi response time. Nah di Apache httpd kita bisa compress dengan dengan menggunakan `mod_gzip` atau `mod_deflate` tpi kita harus check dulu modulenya udah terpasang belum di Apache httpd-nya. Tetapi ini disarankan **tidak untuk mesin development**.
 
 <!--more-->
 
