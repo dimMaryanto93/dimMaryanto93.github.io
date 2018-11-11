@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Gitlab CI, for deploy Angular CLI template project"
+date: 2018-11-11T19:58:55+07:00
 category: gitlab
 tags: 
 - Gitlab
