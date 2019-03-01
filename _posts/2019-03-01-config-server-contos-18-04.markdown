@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "CentOS Server for My Configuration"
+date: 2019-03-01T16:51:41+07:00
 category: server
 tags: 
 - CentOS
