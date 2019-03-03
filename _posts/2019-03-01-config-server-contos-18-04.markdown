@@ -79,3 +79,24 @@ DNS2="8.8.4.4"
 ZONE=public
 ```
 
+## Install adobe flashplayer
+
+Install adobe flashplayer for centos 7, pertama tambahkan repository adobe seperti berikut:
+
+```bash
+rpm -ivh http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
+```
+
+Update repository
+
+```bash
+yum update
+```
+
+Install flashplayer
+
+```bash
+yum install flash-plugin nspluginwrapper alsa-plugins-pulseaudio libcurl
+```
+
