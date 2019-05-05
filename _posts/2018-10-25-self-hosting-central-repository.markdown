@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Self hosting, Central GIT Repository"
+title: "Install gitlab, as self hosting central repository git"
 date: 2018-10-25T23:31:16+07:00
 category: gitlab
 tags: 
