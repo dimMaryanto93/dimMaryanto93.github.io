@@ -8,7 +8,7 @@ tags:
 - nexus
 - repository
 - private-registry
-author: 
+author: Dimas Maryanto
 references:
 - https://blog.sonatype.com/using-nexus-3-as-your-repository-part-3-docker-images
 comments: true
