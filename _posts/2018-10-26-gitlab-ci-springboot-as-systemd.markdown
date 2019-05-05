@@ -254,9 +254,9 @@ Tambahakan file `.gitlab-ci.yml` di root project seperti berikut:
 ```yml
 variables:
   MAVEN_CLI_OPTS: "--show-version"
+  APP_DIR: "/home/app/applications/[groupId]/[artifactId]"
+  APP_NAME: "[aftifactId]"
 
-# Cache downloaded dependencies and plugins between builds.
-# To keep cache across branches add 'key: "$CI_JOB_NAME"'
 cache:
   paths:
     - .m2/repository
@@ -266,19 +266,21 @@ building:
   script:
     - 'mvn $MAVEN_CLI_OPTS clean package install'
   only:
-    - master
+    - /-release$/
   artifacts:
     paths:
       - target/*.jar
-      
+
 copy-artifact:
-    stage: deploy
-    script:
-        - 'cp -u target/*.jar applications/'
-        - 'sudo systemctl restart springboot-systemctl.service'
-    only:
-        - master
+  stage: deploy
+  script:
+    - 'cp -u target/*.jar $APP_DIR/$APP_NAME-$CI_COMMIT_TAG.jar'
+    - 'rm -rf $APP_DIR/application.jar && ln -s $APP_DIR/$APP_NAME-$CI_COMMIT_TAG.jar $APP_DIR/application.jar'
+    - 'sudo systemctl restart $APP_NAME.service'
+  only:
+    - /-release$/
 ```
+Kemudian, setelah itu kita buat tags dulu untuk meng-execute script dengan sufix `-release` contohnya `1.0.0-release`, `1.0.1-release` dan seterunya. 
 
 Setelah itu daftarkan di gitlab runner `gitlab-runner` setelah tahapnya sama seperti sebelumnya tinggal kita checkout aja task, jobs dan pipelinenya. Jika sukses hasilnya seperti berikut:
 
