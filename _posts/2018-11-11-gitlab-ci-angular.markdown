@@ -40,8 +40,8 @@ Sekarang kita buat file `.gitlab-ci.yml` seperti berikut:
 
 ```yml
 variables:
-    SITE_URL: ""
-    APP_NAME: "gitlab-ci-angular"
+  APP_DIR: "/var/www/html/[module-name]/[application-name]"
+  APP_NAME: "[application-name]"
 
 stages:
     - build
@@ -56,23 +56,23 @@ build_localhost:
     before_script:
         - 'npm install'
     script:
-        - ng build --prod  --aot
+        - ng build --prod  --base-href /[module-name]/$APP_NAME/  --deploy-url /[module-name]/$APP_NAME/ --aot --build-optimizer --extract-css --extract-licenses --vendor-chunk=true --i18n-locale id --stats-json
     artifacts:
         paths:
-            - dist/$APP_NAME/*
+            - dist/*
     only:
-        - master
+        - /-release$/
 
 deploy_localhost:
     stage: deploy
     script:
-        - 'rm -rf /var/www/html/*'
-        - 'cp -r dist/$APP_NAME/* /var/www/html/'
+        - 'rm -rf $APP_DIR/*'
+        - 'cp -r dist/* $APP_DIR/'
     only:
-        - master
+        - /-release$/
 ```
 
-Sekarang kita push ke repository, nah sekarang kita check scriptnya apakah udah valid. jika sudah maka akan tampil seperti berikut:
+Sekarang kita push ke repository dan membuat tags dengan surefix `-release` contohnya seperti berikut: `1.0.0-release`, `1.0.2-relase` dan seterusnya, nah sekarang kita check scriptnya apakah udah valid. jika sudah maka akan tampil seperti berikut:
 
 ![valid gitlab-ci]({{site.baseurl}}/assets/img/posts/gitlab-angular/valid-gitlab-ci-yml.png)
 
