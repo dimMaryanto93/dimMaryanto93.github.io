@@ -1,0 +1,76 @@
+---
+layout: post
+title: "iPhone 7 plus di 2019 worth it for me!!!"
+date: 2019-05-05T23:37:40+07:00
+category: iphone
+tags: 
+- apple
+- iphone
+- plus-version
+- iphone7
+author: Dimas Maryanto
+references:
+- https://ibox.co.id/iphone/iphone-7.html
+- https://www.apple.com/iphone-7/specs/
+comments: true
+---
+
+![iphone 7 plus]({{site.baseurl}}/assets/img/posts/iphone-7-plus-2019/logo.jpg){: width="250px" }
+
+Menggunakan hp flagship tahun 2016 ini secara spec tpi iPhone 7 plus ini di rakit tahun 2018 loh. Jujur aja dulu saya belum pernah menggunakan hp besutan apple ini dulu mulanya menggunakan hp yaitu nokia 3230 yang bisa jdi ganjelan pintu, kemudian pindah ke windows phone (nokia lumnia) dan terakhir ke android. Dari penggalaman saya menggunakan HP tersebut. teknologi hp termasuk yang paling cepat obsolate paling bisa bertahan sampe 6 bulan s/d 1 tahun pemakaian dan udah harus ganti.
+
+Tapi sejauh ini, saya juga masih menggunakan sistem operasi Android `6.0.1` (Marshmallow) meskipun OSnya udah gak diupdate sama developernya. Masih bisa digunakan sih ya tpi...
+
+<!--more-->
+
+## Windows phone
+
+![windows phone]({{site.baseurl}}/assets/img/posts/iphone-7-plus-2019/windows-phone.jpg){: width="200px" }
+
+Kelemahan:
+- Aplikasi udah sangat terbatas, dulu ngiler beli android karena ada aplikasi seperti gojek, grab dll
+- OS udah RIP, alias udah gak ada yang pake lagi jaman sekarang, nokia juga sekarang udah menggunakan sistem Android.
+
+Kelebihan:
+- Meskipun RAM 1gb, mengoperation aplikasi sangat lancar dan gak pernah ngelag
+- UI simple, easy to use dan yang paling penting ada live preview di iconnya. keren dah pokoknya
+- Memiliki sistem navigation yang bisa offline, dulu ini terkenal banget. karena saya paling sering pake fitur ini untuk pergi2 ke luar kota tanpa menggunakan akses internet.
+
+## Android phone
+
+![Android phone]({{site.baseurl}}/assets/img/posts/iphone-7-plus-2019/android.jpg){: width="300px" }
+
+Kelebihan: 
+- Dari segi aplikasi, sangat melimpah di play store baik yang gratis maupun yang berbayar
+- UI lebih flexible, bisa di custome, interactive dengan widget
+- Ram yang lumayan besar, ya ini tergantung sama merk, spec dan harga sih tapi yang klo di liat mah windows phone kalah jauh sih.
+- Storage bisa di extend, menggunakan micro-sd card
+
+Kekurangan:
+- Klo aplikasi udah banyak, sering nge-hang. terlalu banyak menyimpan junk file.
+- Gak tau cuman di hp saya, tpi sering restart tiba2
+- Karena RAM yang cukup besar jadi sering overheat, dan mati mendadak.
+
+Tpi sejauh ini sih masih, aman sih dan masih bisa di pake juga dan lumayan bisa buat jadi hp testing. ya karena saya sebagai developer app. jadi pasti butuh device supaya gak running di emulator terus hehehe.
+
+## iPhone
+
+Sebelum menggunakan iphone 7 plus ini, sebenarnya saya udah menggunakan iphone 2018 atau ipad 6 gen untuk coba ios dan saking betahnya sama ios dan layarnya yang kurang lebih 9.7" akhirnya saya pun membeli iphone 7 plus ini di [ibox](https://ibox.co.id/spesial-iphone-7/iphone-7-plus.html).
+
+Kebelutan saya dapet yang perakitan 2018, kata orang iboxnya cerita. 
+
+- Q: mas mau tanya, iphone 7 plus sekarang ada lagi?
+- A: ya mas.
+- Q: bukanya udah discontinue ya?
+- A: ya mas, apple produksi lagi di tahun 2018
+- Q: Oh jadi ini bukan product lama ya (alias baru)?
+- A: Ia mas ini baru, sama seperti ipad 6 secara spec nya.
+- Q: untuk harganya brapa?
+- A: Untuk iphone 7 plus 32gb yang tersedia, sekitar 9jtan.
+- Q: wah udah lumayan murah ya... padahal dulu sampe belasan juta heheh.
+
+Nah dari situ pun, saya gak pikir panjang lansung sikat... karena ipad 6 ada masih ngebut banget buat main game seperti PUBG mobile, Fifa dll.
+
+Dan yang saya bikin pindah ke platform ios ini adalah apple eco systemnya yang pas untuk kegiatan produktifitas saya. Untuk kerjaan saya pake Macbook Pro 13 tahun 2017 + ipad 6 dan itu integrasinya saya keren. saya bisa copy text dari laptop ke ipad tanpa menggunakan perantara seperti dropbox, google drive dan semacamnya pokoknya seamless lah.
+
+Alasan lain saya pilih iphone ini adalah, upgradeable yang bisa dibilang lebih panjang di bandingkan sistem operation mobile lain. kalo baca di forum2 iphone lawas seperti iphone5, iphone-se itu umunya udah 5 s/d 6 tahun dan masih di operasikan dengan lancar dan masih mendapat update ios 12 yang default osnya adalah ios 8/9.
