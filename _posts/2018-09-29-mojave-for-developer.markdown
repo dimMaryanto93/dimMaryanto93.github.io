@@ -103,15 +103,18 @@ java -version
 Berikut adalah software-software yang bisa kita install dari brew package manager
 
 ```bash
-brew install    wget \ 
-                vim \
-                tmux \
-                youtube-dl \
-                maven \
-                gradle \
-                npm \
-                node \
-                openvpn
+brew install wget && \ 
+brew install vim && \
+brew install tmux && \
+brew install youtube-dl && \
+brew install maven && \
+brew install gradle && \
+brew install npm && \
+brew install node && \
+brew install openvpn && \
+brew cask install postman && \
+brew cask install virtualbox && \
+brew cask install pencil
 ```
 <br/>
 
@@ -122,7 +125,7 @@ brew install    wget \
 Jika anda ada developer, angular dengan angular-cli. 
 
 ```bash
-sudo npm install -g @angular/cli typescript
+npm install -g @angular/cli typescript
 ```
 <br/>
 
@@ -158,7 +161,6 @@ Untuk browser, sebagai web developer kita harus punya semua perkakas perang yait
 
 Untuk bermain VM saya meggunakan Oracle Virtualbox, dan untuk running android device menggunakan Genymotion.
 
-- Oracle Virtualbox, [Download disini](https://www.virtualbox.org/)
 - Genymotion personal use, [Download disini](https://www.genymotion.com/fun-zone/)
 
 <br/>
@@ -191,17 +193,27 @@ Untuk meng-aktifikan plugin yang telah disediakan oleh zsh, kita modifikasi file
 ```conf
 plugins=(
   git
-  git-extras 
-  git-flow
   github
-  zsh-syntax-highlighting 
-  npm 
+  pip
+  python
+  mvn
+  brew
+  osx
   docker
   docker-compose
-  mvn
+  docker-machine
+  minikube
+  gradle
+  kubectl
+  node
   postgres
+  spring
 )
+
+fpath+=($ZSH/plugins/docker)
+autoload -U compinit && compinit
 ```
+
 
 Berikut hasilnya setelah di pasang `zsh`
 
@@ -220,9 +232,3 @@ Nah jangan lupa karena kita pake `zsh` default configurasinya ada di `~/.zshrc` 
 {% gist page.gist .zshrc %}
 
 <br/>
-
-## Pencil
-
-![evolus pencil]({{site.baseurl}}/assets/img/posts/mac-os-mojave-dev/pencil.jpeg){: width="200px"}
-
-Biasan untuk mengambarkan flow prgram yang sederhana biasanya saya menggunakan aplikasi ini. [Download disini](https://pencil.evolus.vn/)
