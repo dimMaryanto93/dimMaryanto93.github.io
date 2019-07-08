@@ -3,9 +3,9 @@ layout: post
 title: "Stress test dengan JMeter"
 category: jmeter
 tags: 
-- testing-management
-- stres test
-- 
+- TestingManagement
+- StresTest
+- MeasurePerformance
 author: Dimas Maryanto
 references:
 - https://jmeter.apache.org
