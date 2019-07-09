@@ -14,6 +14,8 @@ references:
 comments: true
 ---
 
+![nginx]({{site.baseurl}}/assets/img/posts/nginx-streaming-from-local-volumn/logo.jpg){: width="200px"}
+
 Aplikasi streaming memang banyak, mulai dari fitur yang lengkap seperti 
 - [Plex Streaming Server]({% post_url 2019-02-28-plex-media-streaming %}), 
 - [Wowza Streaming Engine](https://www.wowza.com/products/streaming-engine)
