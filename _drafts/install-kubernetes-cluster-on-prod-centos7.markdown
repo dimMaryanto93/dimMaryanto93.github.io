@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Install-kubernetes-cluster-on-production"
+title: "Install-kubernetes-cluster-on-prod-centos7"
 category: 
 tags: 
 - 
