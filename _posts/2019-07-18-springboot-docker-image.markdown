@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Publish SpringBoot as Docker Image using maven plugin"
+date: 2019-07-18T15:07:10+07:00
 category: springboot
 tags: 
 - maven-plugin
