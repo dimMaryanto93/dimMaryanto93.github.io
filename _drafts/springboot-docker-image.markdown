@@ -38,6 +38,24 @@ properties;
     - `Spring Boot Actuator`
     - `Spring Boot DevTools`
 
+## Setup maven repository
+
+Sebelum menggunakan plugin tersebut kita harus update dlu authentication di maven local kita dengan mengedit / membuat file jika belum ada `settings.xml` di dalem folder `$HOME/.m2` seperti berikut:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <servers>
+        <server>
+            <id>repository.dimas-maryanto.com</id>
+            <!-- username & password pada nexus oss kalian -->
+            <username>cred-username</username>
+            <password>cred-password</password>
+        </server>
+    </servers>
+</settings>
+```
+
 ## Install plugin
 
 Untuk menggunakan maven plugin `docker-maven-plugin` kita modif file `pom.xml` seperti berikut:
@@ -284,3 +302,56 @@ nah sekarang kata push ke docker registry kita dengan menggunakan maven command 
 ```bash
 mvn clean deploy
 ```
+
+Berikut outputnya:
+
+```bash
+Successfully tagged springboot2-k8s-minikube-example:0.0.1-release
+[INFO] Built springboot2-k8s-minikube-example:0.0.1-release
+[INFO] Tagging springboot2-k8s-minikube-example:0.0.1-release with 0.0.1-release
+[INFO] 
+[INFO] --- maven-deploy-plugin:2.8.2:deploy (default-deploy) @ springboot2-k8s-minikube-example ---
+Uploading: http://repository.dimas-maryanto.com:8081/repository/maven-releases/com/maryanto/dimas/example/springboot2-k8s-minikube-example/0.0.1-release/springboot2-k8s-minikube-example-0.0.1-release.jar
+Uploaded: http://repository.dimas-maryanto.com:8081/repository/maven-releases/com/maryanto/dimas/example/springboot2-k8s-minikube-example/0.0.1-release/springboot2-k8s-minikube-example-0.0.1-release.jar (19581 KB at 42108.4 KB/sec)
+Uploading: http://repository.dimas-maryanto.com:8081/repository/maven-releases/com/maryanto/dimas/example/springboot2-k8s-minikube-example/0.0.1-release/springboot2-k8s-minikube-example-0.0.1-release.pom
+Uploaded: http://repository.dimas-maryanto.com:8081/repository/maven-releases/com/maryanto/dimas/example/springboot2-k8s-minikube-example/0.0.1-release/springboot2-k8s-minikube-example-0.0.1-release.pom (9 KB at 158.5 KB/sec)
+Downloading: http://repository.dimas-maryanto.com:8081/repository/maven-releases/com/maryanto/dimas/example/springboot2-k8s-minikube-example/maven-metadata.xml
+Uploading: http://repository.dimas-maryanto.com:8081/repository/maven-releases/com/maryanto/dimas/example/springboot2-k8s-minikube-example/maven-metadata.xml
+Uploaded: http://repository.dimas-maryanto.com:8081/repository/maven-releases/com/maryanto/dimas/example/springboot2-k8s-minikube-example/maven-metadata.xml (354 B at 12.8 KB/sec)
+[INFO] 
+[INFO] --- docker-maven-plugin:1.1.1:tag (tag-image) @ springboot2-k8s-minikube-example ---
+[INFO] Using authentication suppliers: [ConfigFileRegistryAuthSupplier]
+[INFO] Creating tag repository.dimas-maryanto.com:8087/tabeldata/springboot2-k8s-minikube-example:0.0.1-release from springboot2-k8s-minikube-example:0.0.1-release
+[INFO] 
+[INFO] --- docker-maven-plugin:1.1.1:push (push-image) @ springboot2-k8s-minikube-example ---
+[INFO] Using authentication suppliers: [ConfigFileRegistryAuthSupplier]
+[INFO] Pushing repository.dimas-maryanto.com:8087/tabeldata/springboot2-k8s-minikube-example:0.0.1-release
+The push refers to repository [repository.dimas-maryanto.com:8087/tabeldata/springboot2-k8s-minikube-example]
+b41ebae5010d: Pushed 
+79126c4885f0: Pushed 
+ceaf9e1ebef5: Layer already exists 
+9b9b7f3d56a0: Layer already exists 
+f1b5933fe4b5: Layer already exists 
+0.0.1-release: digest: sha256:6aee3eae790f12ede14ea505c5c3e8cca3e933e5c6c9ac16849c64d47d754323 size: 1366
+null: null 
+[INFO] Pushing repository.dimas-maryanto.com:8087/tabeldata/springboot2-k8s-minikube-example:0.0.1-release
+The push refers to repository [repository.dimas-maryanto.com:8087/tabeldata/springboot2-k8s-minikube-example]
+b41ebae5010d: Layer already exists 
+79126c4885f0: Layer already exists 
+ceaf9e1ebef5: Layer already exists 
+9b9b7f3d56a0: Layer already exists 
+f1b5933fe4b5: Layer already exists 
+0.0.1-release: digest: sha256:6aee3eae790f12ede14ea505c5c3e8cca3e933e5c6c9ac16849c64d47d754323 size: 1366
+null: null 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 14.958s
+[INFO] Finished at: Thu Jul 18 14:56:06 WIB 2019
+[INFO] Final Memory: 58M/619M
+[INFO] ------------------------------------------------------------------------
+```
+
+Nah sekarang tinggal kita check aja di docker hosted repository nexus seperti berikut:
+
+![springboot stored on nexus oss]({{site.baseurl}}/assets/img/posts/docker-maven-plugin/springboot-stored.png)

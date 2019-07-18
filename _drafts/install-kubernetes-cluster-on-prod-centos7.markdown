@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Kubernetes as multi-cluster (kubeadm) on centos7 for Production Machine"
+title: "k8s as multi-cluster (kubeadm) on centos7 for Production"
 category: kubernetes
 tags: 
 - k8s
@@ -16,6 +16,7 @@ references:
 comments: true
 ---
 
+![kubeadm]({{site.baseurl}}/assets/img/posts/k8s-centos-prod/logo.png){: width="250px" }
 
 simple description...
 <!--more-->
