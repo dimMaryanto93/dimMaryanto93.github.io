@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Kubernetes single cluster for development with minikube"
+date: 2019-07-22T06:22:42+07:00
 category: k8s
 tags: 
 - Kubernetes
