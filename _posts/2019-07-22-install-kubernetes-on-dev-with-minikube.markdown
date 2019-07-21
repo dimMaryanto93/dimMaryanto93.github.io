@@ -237,9 +237,16 @@ kubectl get services -n springboot
 Sekarang kita test menggunakan dalam kubernetes minikube vm, dengan menggunakan cluster-ip yaitu `10.107.250.236` yang kita dapatkan dari service name seperti berikut
 
 ```bash
-curl 10.107.250.236:8080/actuator
+minikube ssh
 
-#output
+#                       _             _            
+#          _         _ ( )           ( )           
+#___ ___  (_)  ___  (_)| |/')  _   _ | |_      __  
+#/' _ ` _ `\| |/' _ `\| || , <  ( ) ( )| '_`\  /'__`\
+#| ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/
+#(_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'(_,__/'`\____)
+
+$ curl 10.107.250.236:8080/actuator
 
 {
    "_links":{
