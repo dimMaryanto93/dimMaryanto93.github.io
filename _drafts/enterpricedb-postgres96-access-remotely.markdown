@@ -12,8 +12,7 @@ references:
 comments: true
 ---
 
-
-simple description...
+by default database PostgreSQL tidak dapat di akses secara remote / outside network.
 <!--more-->
 
 more content here...
