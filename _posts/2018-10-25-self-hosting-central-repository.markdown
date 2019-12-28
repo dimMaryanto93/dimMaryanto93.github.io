@@ -117,3 +117,27 @@ bundle exec rake gitlab:backup:restore RAILS_ENV=production
 ## restart service gitlab
 sudo service gitlab restart
 ```
+
+### Gitlab management backup with crontab
+
+Create crontab di linux dengan perintah:
+
+```bash
+sudo contab -e
+```
+
+kemudian masukan perintah berikut:
+
+```cron
+@weekly rm -rf /var/opt/gitlab/backups/* && \
+gitlab-rake gitlab:backup:create && \
+mv /var/opt/gitlab/backups/* /mnt/path-your-media && \
+cp -ru /etc/gitlab/* /mnt/path-your-media && \
+chmod -R 777 /mnt/path-your-media
+```
+
+Keterangan:
+- `@weekly` => run every week
+- `rm -rf /var/opt/gitlab/backups/*` => remote config, tmp, and other
+- `gitlab-rake gitlab:backup:create` => backup
+- `mv /var/opt/gitlab/backups/* /mnt/path-your-media` => pindahkan hasil backup gitlab repository ke folder mount
