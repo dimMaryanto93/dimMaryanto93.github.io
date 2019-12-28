@@ -123,7 +123,7 @@ sudo service gitlab restart
 Create crontab di linux dengan perintah:
 
 ```bash
-sudo contab -e
+sudo crontab -e
 ```
 
 kemudian masukan perintah berikut:
