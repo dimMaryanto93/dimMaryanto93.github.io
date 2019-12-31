@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Gadget Favorite di 2019"
+date: 2019-12-31T19:25:12+07:00
 category: setup
 tags: 
 - setup-show-off
