@@ -51,7 +51,7 @@ Ipad Pro 11" gen 3 atau sering di sebut Ipad Pro 2018 adalah secondary daily dri
 
 ## 5. iPhone 7 plus
 
-![iphone 7plus]({{site.baseurl}}/)
+![iphone 7plus]({{site.baseurl}}/assets/img/posts/iphone-7-plus-2019/logo.jpg){: width="250px" }
 
 Ya selain Macbook pro, Ipad, saya juga menggunakan Iphone 7 Plus. Banyak orang yang bilang saya `Apple Fanboy` tpi saya sih masa bodo gak peduli orang bilang apa, tapi yang jelas sih saya menggunakan product Apple ya karena kebutuhan bukan karena ikutan trend, buktinya saya juga masih make product Microsoft kok kayak Microsoft Windows untuk main Games, selain itu juga saya juga masih pake Linux juga untuk Home Server saya. Ok back to topic iPhone 7
 
