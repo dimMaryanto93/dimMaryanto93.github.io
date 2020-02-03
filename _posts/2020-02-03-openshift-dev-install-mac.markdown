@@ -36,6 +36,7 @@ Nah sekarang kita install Openshift di Mac OS, ada berapa yang kita butuhkan unt
 - Install kubernetes CLI
 - Install Openshift cluster
 - Install Minishift
+- Deploy simple web application with PHP
 
 ## Instal Docker
 
@@ -328,3 +329,30 @@ Flags:
 
 Use "minishift [command] --help" for more information about a command.
 ```
+
+## Deploy Simple Application with PHP
+
+Untuk mendeploy applikasi di openshift, kita pertama buat dulu project dari halaman openshift management console seperti berikut:
+
+1. Membuat project di Openshift Web Console
+![create project openshift management console]({{site.baseurl}}/assets/img/posts/openshift-on-premise-mac/openshift-create-project.png){: width="400px" }
+
+
+2. Setelah itu masuk ke project yang telah dibuat seperti berikut:
+![example-project-dashboard]({{site.baseurl}}/assets/img/posts/openshift-on-premise-mac/openshift-example-dashboard.png){: width="600px" }
+
+
+3. Kemudian klick `Browse Catalog` -> `Languages` -> `PHP` seperti berikut:
+![deploy-php-1]({{site.baseurl}}/assets/img/posts/openshift-on-premise-mac/openshift-deploy-php-1.png){: width="600px" }
+
+
+4. Lalu Klick `Next` kemudian, muncul form berikut:
+![deploy-php-2]({{site.baseurl}}/assets/img/posts/openshift-on-premise-mac/openshift-deploy-php-2.png){: width="600px" }
+
+
+5. Setelah itu `Next` dan `Finish`, maka setelah itu source-code akan di build oleh openshift:
+![deploy-php-build]({{site.baseurl}}/assets/img/posts/openshift-on-premise-mac/openshift-build.png){: width="600px" }
+
+
+6. Setelah build success, berikut hasilnya:
+![deploy-serve]({{site.baseurl}}/assets/img/posts/openshift-on-premise-mac/openshift-serve.png){: width="600px" }
