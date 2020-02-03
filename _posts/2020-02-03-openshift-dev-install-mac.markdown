@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Install Openshift on-premise for development on Mac OS"
+date: 2020-02-03T17:38:34+07:00
 category: openshift
 tags: 
 - Docker
