@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Install Docker CE for Centos 8"
+date: 2020-08-02T21:25:17+07:00
 category: docker
 tags: 
 - centos

@@ -5,6 +5,7 @@ date: 2020-02-03T17:38:34+07:00
 category: openshift
 tags: 
 - Docker
+- Virtualbox
 - Kubernetes
 - Redhad
 - Openshift 
@@ -26,7 +27,7 @@ Platform yang kita gunakan untuk mencoba Openshift ini adalah `OKD is a distribu
 
 Karena kita di PT. Tabeldata Informatika partner dari PT. Multipolar Technology yang merupakan Brand Ambasador dari IBM dan RedHat, so jadi application yang kita dukung / develop harus support dengan system PaaS (Platform as a service) seperti Openshift. 
 
-Ada 2 cara untuk menginstall Openshift client tools yaitu dengan `Run OKD in a Container` dan `Run the All-In-One VM with Minishift` tapi disini kita installnya dengan method yang paling simple aja ya...
+Ada 2 cara untuk menginstall Openshift client tools yaitu dengan `Run OKD in a Container` dan `Run the All-In-One VM with Minishift` tapi disini kita installnya dengan method yang paling simple aja ya yaitu dengan `Run the All-In-One VM with Minishift`
 
 Nah sekarang kita install Openshift di Mac OS, ada berapa yang kita butuhkan untuk menginstall yaitu:
 - Install docker
