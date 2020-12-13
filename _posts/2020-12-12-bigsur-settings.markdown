@@ -10,6 +10,7 @@ references:
 - https://www.apple.com/id/macos/big-sur/
 comments: true
 image_path: /assets/img/posts/mac-os-bigsur-settings
+gist: dimMaryanto93/4749c87ad654a44fde1a0916f5126343
 ---
 
 ![bigsur]({{site.baseurl}}{{page.image_path}}/bigsur.png){:width="400px"}
@@ -93,3 +94,27 @@ Jika temen-temen perhatikan ada yang hilang khak dengan top panel? jika ya brati
 Selain Konfigurasi tersebut biasanya saya juga mengaktifkan auto startup aplikasi seperti email, whatapp, telegram dan lain-lain yang berkaitan dengan chat jadi gak perlu buka satu2. kita bisa aktifkan di menu `Settings` -> `User & Group` -> pilih `Login item` -> kemudian kita bisa tambahkan aplikasi yang kita mau ketika Mac dihidupkan dan di load.
 
 ![login items auto startup]({{site.baseurl}}{{page.image_path}}/user-group/login-items.png)
+
+## Terminal Settings
+
+Apps Terminal memang penting buat Programer seperti saya, salah satu editor terminal favorite saya yaitu `vim` berikut adalah configurasi vim supaya lebih productive
+
+- Enable line of number & Syntax highlighter
+
+    Untuk mengaktifkan plugin line of number dan syntax highliter secara permanent kita bisa buat file dengan nama `.vimrc` di folder root home anda kemudian isinya seperti berikut:
+
+    {% gist page.gist ".vimrc" %}
+
+- Styling terminal dengan [oh-my-zsh](https://ohmyz.sh/)
+
+    ![ohmyzsh]({{site.baseurl}}{{page.image_path}}/terminal/oh-my-zsh.jpg){:width="400px"}
+
+    Untuk styling terminal saya lebih suka yang simple stylenya seperti oh-my-zsh ini. untuk cara instalnya silahkan coba [main ke sini](https://ohmyz.sh/#install)
+
+    `oh my zsh` juga ada beberapa plugin yang kita pasang seperti maven, gradle, docker dan lain-lain. berikut adalah plugin yang saya gunakan.
+
+    {% gist page.gist ".zshrc" %}
+
+    dan berikut adalah file `.bash_profile` untuk menyimpan env variable seperti JAVA_HOME, ANDROID_SDK dan lain-lain.
+
+    {% gist page.gist ".bash_profile" %}
