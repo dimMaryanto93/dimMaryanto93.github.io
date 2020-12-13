@@ -115,6 +115,6 @@ Apps Terminal memang penting buat Programer seperti saya, salah satu editor term
 
     {% gist page.gist ".zshrc" %}
 
-    dan berikut adalah file `.bash_profile` untuk menyimpan env variable seperti JAVA_HOME, ANDROID_SDK dan lain-lain.
+    dan berikut adalah file `.bash_profile` untuk menyimpan env variable seperti `JAVA_HOME`, `ANDROID_SDK` dan lain-lain.
 
     {% gist page.gist ".bash_profile" %}
