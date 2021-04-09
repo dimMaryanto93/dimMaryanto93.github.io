@@ -8,6 +8,7 @@ tags:
 author: {{ author }}
 references:
 - {{ ref }}
+gist: {{ gist }}
 comments: true
 ---
 

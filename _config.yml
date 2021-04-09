@@ -1,21 +1,6 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
 header: imas Maryanto
 title: Notes of programmer
-email: engineer.dimmaryanto93@outlook.com
+email: software.dimas_m@icloud.com
 description: >- # this means to ignore newlines until "baseurl:"
   Blog ini adalah catatan penting untuk seorang programmer yang pelupa seperti saya,
   Di Blog ini berisi artikel-artikel yang mengukin berguna dalam pekerjaan sebagai IT Person yang 
@@ -25,15 +10,31 @@ url: "www.dimas-maryanto.com" # the base hostname & protocol for your site, e.g.
 twitter_username: dimMaryanto93
 github_username:  dimMaryanto93
 
-# Build settings
-markdown: kramdown
-highlighter: rouge
-paginate: 5
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 gist:
   noscript: false
 
 permalink: /notes/:categories/:title
+
+paginate: 5
 paginate_path: /pages/page-:num
+
+jekyll-minifier:
+  exclude: 'atom.xml'
+
+jekyll-archives:
+  enabled: []
+  layout: archive
+  permalinks:
+    year: '/archives/:year/'
+    month: '/archives/:year/:month/'
+    day: '/archives/:year/:month/:day/'
+    tag: '/archives/tag/:name/'
+    category: '/archives/category/:name/'
+
+titlecase: false
 
 plugins:
   - jekyll-gist
@@ -43,12 +44,17 @@ plugins:
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
 exclude:
-#   - Gemfile
-#   - Gemfile.lock
-  - node_modules
+  - _docker/
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - package-lock.json
+  - package.json
+  - README.md
+  - CHANGELOG.md
+  - CONTRIBUTING.md
+#   - node_modules
 #   - vendor/bundle/
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
-
-exclude: [vendor]
