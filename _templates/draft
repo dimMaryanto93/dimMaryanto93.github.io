@@ -8,6 +8,7 @@ author: {{ author }}
 references:
 - {{ ref }}
 gist: {{ gist }}
+github: {{ github }}
 comments: true
 ---
 
