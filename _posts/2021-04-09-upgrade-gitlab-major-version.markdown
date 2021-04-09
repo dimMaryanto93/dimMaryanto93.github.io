@@ -97,7 +97,7 @@ Setelah gitlabnya running & up, tahap selanjutnya adalah Restore dari backup yan
 
 Untuk melakukan restore, kita bisa menggunakan perintah `docker exec` seperti berikut:
 
-{% gist page.gist "gitlab-backup-init.bash" %}
+{% gist page.gist "docker-compose-exec-restore.bash" %}
 
 Setelah setelah selesai proses restore, kita reconfigure & restart seperti berikut
 
