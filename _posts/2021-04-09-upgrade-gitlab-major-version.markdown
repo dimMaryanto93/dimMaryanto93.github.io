@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "How to Upgrade Gitlab easy way, from 11.x.x to latest version using Docker"
+date: 2021-04-09T13:04:18+07:00
 category: gitlab
 tags: 
 - Gitlab
