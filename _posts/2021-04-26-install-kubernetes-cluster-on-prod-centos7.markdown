@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "k8s as multi-cluster (kubeadm) on centos7 for Production"
+date: 2021-04-26T15:43:44+07:00
 category: kubernetes
 tags: 
 - k8s
