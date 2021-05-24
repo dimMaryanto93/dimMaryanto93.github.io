@@ -339,7 +339,7 @@ ssh root@192.168.100.251
 
 kubeadm init \
 --apiserver-advertise-address=192.168.100.251 \
---pod-network-cidr=192.168.0.0/16
+--pod-network-cidr=10.244.0.0/16
 {% endhighlight %}
 
 Jika di jalankan maka hasilnya seperti berikut:
@@ -347,7 +347,7 @@ Jika di jalankan maka hasilnya seperti berikut:
 ```bash
 [root@k8s-master ~]# kubeadm init \
 > --apiserver-advertise-address=192.168.100.251 \
-> --pod-network-cidr=192.168.0.0/16
+> --pod-network-cidr=10.244.0.0/16
 [init] Using Kubernetes version: v1.21.0
 [preflight] Running pre-flight checks
         [WARNING Firewalld]: firewalld is active, please ensure ports [6443 10250] are open or your cluster may not function correctly
@@ -461,17 +461,16 @@ Karena pod `kube-system/coredns-558bd4d5db-fc5v5`, `kube-system/coredns-558bd4d5
 
 ## Installing Addons Networking and Network Policy
 
-Untuk network plugin and policy, sebetulnya ada banyak implementasinya. bisa di check [disini](https://kubernetes.io/docs/concepts/cluster-administration/networking/#how-to-implement-the-kubernetes-networking-model) namun di materi kali ini kita akan menggunakan [calico](https://docs.projectcalico.org/getting-started/kubernetes/quickstart) seperti berikut untuk menginstallnya:
+Untuk network plugin and policy, sebetulnya ada banyak implementasinya. bisa di check [disini](https://kubernetes.io/docs/concepts/cluster-administration/networking/#how-to-implement-the-kubernetes-networking-model) namun di materi kali ini kita akan menggunakan [calico](https://github.com/flannel-io/flannel) seperti berikut untuk menginstallnya:
  
 {% highlight bash %}
-kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
-kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 {% endhighlight %}
 
 Setelah itu kita tunggu sampe semua service, config dan lain-lain jalan. dengan menggunakan perintah berikut:
 
 {% highlight bash %}
-watch kubectl get pods -n calico-system
+watch kubectl get pods -A
 {% endhighlight %}
 
 Setelah semua jalan pada namespace `calico-system`, kita check kembali semua podsnya makahasilnya seperti berikut:
@@ -479,9 +478,6 @@ Setelah semua jalan pada namespace `calico-system`, kita check kembali semua pod
 ```bash
 [root@k8s-master ~]# kubectl get pods --all-namespaces
 NAMESPACE         NAME                                               READY   STATUS    RESTARTS   AGE
-calico-system     calico-kube-controllers-5cbf59cb6f-qxffc           1/1     Running   0          66s
-calico-system     calico-node-qn995                                  1/1     Running   0          66s
-calico-system     calico-typha-555784f756-zdnjf                      1/1     Running   0          67s
 kube-system       coredns-558bd4d5db-fc5v5                           1/1     Running   0          13m
 kube-system       coredns-558bd4d5db-fsdw4                           1/1     Running   0          13m
 kube-system       etcd-k8s-master.example.com                        1/1     Running   0          14m
@@ -489,7 +485,7 @@ kube-system       kube-apiserver-k8s-master.example.com              1/1     Run
 kube-system       kube-controller-manager-k8s-master.example.com     1/1     Running   0          14m
 kube-system       kube-proxy-r9hw9                                   1/1     Running   0          13m
 kube-system       kube-scheduler-k8s-master.example.com              1/1     Running   0          14m
-tigera-operator   tigera-operator-675ccbb69c-7t5n9                   1/1     Running   0          86s
+kube-system       kube-flannel-ds-mpgq2                              1/1     Running   0          46m
 ```
 
 Nah sekarang udah gak ada yang statusnya `Pending` atau stuck di `CreatingContainer` artinya single cluster kubernetes dengan `kubeadm` sudah selesai.
